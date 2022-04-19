@@ -1,0 +1,58 @@
+<div id="chosen-powers" *ngIf="available_powers > 0">
+    <div id="active-powers">
+        <p *ngIf="has_chosen_powers">Escolha mais {{available_powers - number_chosen_powers}} poder(es) abaixo</p>
+        <p *ngIf="!has_chosen_powers" style="padding-top: 10px;">Escolha {{available_powers}} poder(es) abaixo</p>
+        
+        <div *ngIf="has_chosen_powers">
+            <table>
+                <tr *ngFor="let power of chosen_powers; let i = index;">
+                    <td class="power-info">
+                        <div class="panel-group" [attr.id]="'accordion2_' + i">
+                            <div class="panel panel-default" >
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" [attr.data-parent]="'#accordion2_' + i" [attr.href]="'#collapse2_' + i">{{ power }}</a>
+                                    </h4>
+                                </div>
+                                <div [attr.id]="'collapse2_' + i" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                    {{ chosen_powers_description[i] }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="remove-power" (click)="remove_power($event)">-</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="not-active-powers">
+        <table>
+            <tr *ngFor="let power of powers_list; let i = index;">
+                <td class="power-info">
+                    <div class="panel-group" [attr.id]="'accordion3_' + i">
+                        <div class="panel panel-default" >
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" [attr.data-parent]="'#accordion3_' + i" [attr.href]="'#collapse3_' + i">{{ power }}</a>
+                                </h4>
+                            </div>
+                            <div [attr.id]="'collapse3_' + i" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                {{ powers_description[i] }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <button class="add-power" (click)="choose_power($event)">+</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

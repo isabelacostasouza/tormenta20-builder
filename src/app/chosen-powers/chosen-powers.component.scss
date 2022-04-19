@@ -1,0 +1,88 @@
+#chosen-powers {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    background-color: lightgray;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    padding-bottom: 15px;
+    p {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    table {
+        width: 100%;
+    }
+    .power-info {
+        width: 90%;
+    }
+    .proeficiencia, .power, .item {
+        font-weight: 400;
+        display: inline;
+        padding: 0 20px;
+    }
+    #active-powers {
+        background-color: lightgreen;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    #not-active-powers {
+        padding: 10px;
+        height: 300px;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+}
+
+.panel-collapse {
+    background-color: #a5a5a5;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+    padding: 5px 15px;
+}
+
+.panel-group {
+    background-color:  #b9b5b5;
+    padding: 1px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width:100%;
+
+    a {
+        color: black;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 15px;
+    }
+}
+
+button {
+    width: 100%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background-color: #00bb13;
+    border: none;
+    font-weight: bold;
+    color: lightgray;
+    cursor: pointer;
+}
+
+.remove-power {
+    background-color: #ef0c0c;
+}
+
+.add-power {
+    background-color: #00bb13;
+}
+
+.disabled {
+    background-color: #91c791;;
+}
+
+@media (max-width:600px) {
+    .panel-title {
+        height: 30px;
+        overflow: hidden;
+    }
+}

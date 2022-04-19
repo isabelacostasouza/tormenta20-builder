@@ -1,0 +1,20 @@
+<div id="powers">
+    <p>Lista de poderes pré-definidos</p>
+
+    <div class="bs-example">
+        <div class="panel-group" [attr.id]="'accordion_' + i" *ngFor="let power of given_powers; let i = index;">
+            <div class="panel panel-default" >
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" [attr.data-parent]="'#accordion_' + i" [attr.href]="'#collapseOne_' + i">{{ power }}</a>
+                    </h4>
+                </div>
+                <div [attr.id]="'collapseOne_' + i" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                    {{ elements_description[i] }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

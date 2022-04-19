@@ -1,0 +1,91 @@
+.label {
+    width: 100%;
+}
+
+.attribute {
+    width: 15.9%;
+    text-align: center;
+    padding: 3px;
+    border: solid;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.name {
+    font-weight: bold;
+    margin: 0px;
+}
+
+.value {
+    font-size: 40px;
+    margin: 0px;
+}
+
+.value_2 {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.btn.focus, .btn:focus, .btn-success.focus, .btn-success:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.green-button {
+    background-color: #2cb704;
+    border: none;
+}
+
+.checkbox {
+    margin-top: 8px;
+    margin-right: 10px;
+}
+
+#extra_attributes {
+    background-color: lightgray;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: center;
+    padding-bottom: 15px;
+    p {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    table {
+        margin: 0 1%;
+        width: 100%;
+        table-layout: fixed;
+    }
+}
+
+.row {
+    margin: 0px;
+    margin-right: -8px;
+}
+
+@media (max-width:1300px) {
+    .attribute {
+        width: 15.5%;
+    }
+}
+
+@media (max-width:600px) {
+    .attribute {
+        width: 31.7%;
+    }
+
+    .last_3 {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width:360px) {
+    .row {
+        margin-right: -5px;
+    }
+
+    .attribute {
+        width: 31%;
+    }
+}

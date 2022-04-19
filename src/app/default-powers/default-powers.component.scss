@@ -1,0 +1,44 @@
+#powers {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    background-color: lightgray;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    padding-bottom: 15px;
+    p {
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    td {
+        padding-right: 40px;
+    }
+    table {
+        margin-left: 20px;
+    }
+    .proeficiencia, .power, .item {
+        font-weight: 400;
+        display: inline;
+        padding: 0 20px;
+    }
+}
+
+.panel-collapse {
+    background-color: #a5a5a5;
+    margin-bottom: 10px;
+    text-align: left;
+    padding: 5px 15px;
+}
+
+.panel-group {
+    background-color: grey;
+    padding: 1px;
+    margin-bottom: 10px;
+
+    a {
+        color: black;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 15px;
+    }
+}

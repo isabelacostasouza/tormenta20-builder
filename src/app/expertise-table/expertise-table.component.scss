@@ -1,0 +1,92 @@
+.checkbox {
+    margin-top: 8px;
+    margin-right: 10px;
+}
+
+.expertise-name, .expertise-numbers {
+    padding-right: 20px;
+    padding-left: 10px;
+}
+
+.expertise-name {
+    padding-right: 20px;
+
+    :first-child {
+        padding-left: 20px;
+        padding-right: 0px;
+    }
+}
+
+.expertise-numbers, .expertise-details {
+    text-align: center;
+    padding-right: 10px;
+}
+
+.expertise-details {
+    padding-left: 7px;
+}
+
+.expertise-sum {
+    font-weight: bold;
+    text-align: center;
+}
+
+th {
+    padding-left: 10px;
+    padding-right: 10px;
+
+    :first-child {
+        padding-right: 0px;
+    }
+}
+
+col {
+    :last-child {
+        margin-left: 2px;
+    }
+}
+
+.col-2, .col-5, .col-7, .col-9 {
+    background-color: lightgray;
+}
+
+input {
+    width: 100%;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    margin-left: 5%;
+}
+
+.larger-table {
+    table-layout: fixed;
+    width: 97%;
+    margin-top: 20px;
+
+    th {
+        display: none;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+@media (max-width:1200px) {
+    table {
+        margin-left: 0;
+    }
+}
+
+@media (max-width:600px) {
+    input {
+        width: 20px;
+    }
+
+    table {
+        margin-left: 0;
+    }
+    
+}

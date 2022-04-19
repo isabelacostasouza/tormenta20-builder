@@ -1,0 +1,38 @@
+.life, .mana {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 20px;
+    background-color: lightgrey;
+    padding-top: 20px;
+
+    .number {
+        font-size: 40px;
+        font-weight: bold;
+        margin-top: -10px;
+    }
+}
+
+.basics {
+    margin-bottom: 20px;
+    background-color: #a5a5a5;
+    padding-top: 17px;
+    p {
+        margin: 0px;
+        span {
+            font-weight: bold;
+        }
+    }
+}
+
+.row {
+    margin: 0px;
+}
+
+@media (max-width:600px) {
+    .basics {
+        display: none;
+    }
+    .life, .mana {
+        width: 50%;
+    }
+}

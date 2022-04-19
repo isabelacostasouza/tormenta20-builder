@@ -1,0 +1,6 @@
+<div id="proficiencies" *ngIf="proficiencies_list">
+    <p>A seguir suas proeficiências (bônus de classe)</p>
+    <ng-container *ngFor="let proficiency of proficiencies_list">
+      <p class="proficiency">{{proficiency}}</p>
+    </ng-container>
+  </div>

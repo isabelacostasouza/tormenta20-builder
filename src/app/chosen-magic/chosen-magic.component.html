@@ -1,0 +1,97 @@
+<div>
+  <div id="magic_schools" *ngIf="has_magic_school">
+      <p>Escolha 3 escolas de magia</p>
+      <table>
+        <tr>
+          <td *ngFor="let school of magic_schools_1">{{school}}</td>
+        </tr>
+        <tr class="school-checkboxes">
+          <td *ngFor="let school of magic_schools_1; let i = index;">
+              <input
+                  type="checkbox"
+                  (change)="select_magic_school($event)"
+                  class="magic-schools-checkbox"
+                  [attr.id]="i">
+          </td>
+        </tr>
+
+        <tr>
+          <td *ngFor="let school of magic_schools_2">{{school}}</td>
+        </tr>
+        <tr class="school-checkboxes">
+          <td *ngFor="let school of magic_schools_2; let i = index;">
+              <input
+                  type="checkbox"
+                  (change)="select_magic_school($event)"
+                  class="magic-schools-checkbox"
+                  [attr.id]="i+4">
+          </td>
+        </tr>
+      </table>
+  </div>
+  
+  <div id="chosen-magics" *ngIf="all_schools_chosen">
+    <div id="active-magics">
+        <p style="padding-top: 10px;">
+          Escolha o seguinte número de magias:
+          <br>{{available_magics[0] - number_chosen_magics[0]}} <span>de 1º circulo;</span>
+          {{available_magics[1] - number_chosen_magics[1]}} <span>de 2º circulo;</span>
+          {{available_magics[2] - number_chosen_magics[2]}} <span>de 3º circulo;</span>
+          {{available_magics[3] - number_chosen_magics[3]}} <span>de 4º circulo;</span>
+          {{available_magics[4] - number_chosen_magics[4]}} <span>de 5º circulo;</span>
+        </p>
+
+        <div>
+            <table>
+              <tr *ngFor="let magic of chosen_magics; let i = index;">
+                <td class="magic-info">
+                  <div class="panel-group" [attr.id]="'accordionMagic1_' + i">
+                      <div class="panel panel-default" >
+                          <div class="panel-heading">
+                              <h4 class="panel-title">
+                                  <a data-toggle="collapse" [attr.data-parent]="'#accordionMagic1_' + i" [attr.href]="'#collapseMagic1_' + i">[{{ magic.informacao.circulo }}º circulo] {{ magic.nome }}</a>
+                              </h4>
+                          </div>
+                          <div [attr.id]="'collapseMagic1_' + i" class="panel-collapse collapse in">
+                              <div class="panel-body">
+                              {{ magic.informacao.descricao }}
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </td>
+              <td>
+                  <button class="remove-magic" (click)="remove_magic($event)">-</button>
+              </td>
+            </tr>
+            </table>
+        </div>
+    </div>
+  
+    <div id="not-active-magics">
+        <table>
+            <tr *ngFor="let magic of magics_list; let i = index;">
+                <td class="magic-info">
+                    <div class="panel-group" [attr.id]="'accordionMagic2_' + i">
+                        <div class="panel panel-default" >
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" [attr.data-parent]="'#accordionMagic2_' + i" [attr.href]="'#collapseMagic2_' + i">[{{ magic.informacao.circulo }}º circulo] {{ magic.nome }}</a>
+                                </h4>
+                            </div>
+                            <div [attr.id]="'collapseMagic2_' + i" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                {{ magic.informacao.descricao }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <button class="add-magic" (click)="choose_magic($event)">+</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+  </div>
+</div>
