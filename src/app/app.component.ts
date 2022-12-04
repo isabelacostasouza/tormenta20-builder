@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import database from '../assets/database.json';
-import pericias from '../assets/pericias.json';
+import database from '../assets/tormenta/database.json';
+import pericias from '../assets/tormenta/pericias.json';
 
 import { PDFDocument } from 'pdf-lib';
 import * as download from "downloadjs";
@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
   }
 
   async download_sheet() {
-    const formUrl = '../assets/ficha_editavel.pdf'
+    const formUrl = '../assets/tormenta/ficha_editavel.pdf'
     const formPdfBytes = await fetch(formUrl).then(res => res.arrayBuffer())
     const editable_sheet = await PDFDocument.load(formPdfBytes)
 

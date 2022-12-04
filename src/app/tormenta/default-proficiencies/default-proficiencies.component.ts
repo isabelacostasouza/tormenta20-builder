@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { SubjectizeProps } from 'subjectize';
 
-import database from '../../assets/database.json';
+import database from '../../../assets/tormenta/database.json';
 
 @Component({
   selector: 'default-proficiencies',

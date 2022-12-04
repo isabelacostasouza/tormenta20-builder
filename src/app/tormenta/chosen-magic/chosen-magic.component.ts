@@ -2,8 +2,8 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { SubjectizeProps } from 'subjectize';
 
-import database from '../../assets/database.json';
-import magic_database from '../../assets/magics.json';
+import database from '../../../assets/tormenta/database.json';
+import magic_database from '../../../assets/tormenta/magics.json';
 
 @Component({
   selector: 'chosen-magic',

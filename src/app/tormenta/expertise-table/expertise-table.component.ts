@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
-import pericias from '../../assets/pericias.json';
-import database from '../../assets/database.json';
+import pericias from '../../../assets/tormenta/pericias.json';
+import database from '../../../assets/tormenta/database.json';
 
 @Component({
   selector: 'expertise-table',

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
-import database from '../../assets/database.json';
-import attributes from '../../assets/attributes.json';
+import database from '../../../assets/tormenta/database.json';
+import attributes from '../../../assets/tormenta/attributes.json';
 import { SubjectizeProps } from 'subjectize';
 import { ReplaySubject } from 'rxjs';
 
@@ -30,14 +30,15 @@ export class BaseAttributesComponent implements OnInit {
   classes = database["classe"];
   races = database["raça"];
 
-  total_expertises = 0;
   life_points = 0;
   mana_points = 0;
+  total_expertises = 0;
+  extra_attributes = 0;
+  free_attributes_cost = 0;
+
   attributes_modifiers = [2, 2, 1, 1, 1, 1];  
   attributes_values = [14, 14, 13, 13, 13, 13];
-  
-  free_attributes_cost = 0;
-  extra_attributes = 0;
+
   attributes_values_cost = attributes["custo"];
   attributes_modifiers_cost = attributes["modificador"];
 
