@@ -76,6 +76,7 @@ export class DefaultPowersComponent implements OnInit{
     for(let i = 0; i < this.char_level; i++) {
       let level_class = this.class_element.niveis[i];
       if(level_class.habilidades) { this.given_powers = this.given_powers.concat(level_class.habilidades); }
+      if(level_class.remover) { this.given_powers.splice(this.given_powers.indexOf(level_class.remover[0]), 1); }
       if(level_class.poderes) { this.available_powers += 1 }
     }
 

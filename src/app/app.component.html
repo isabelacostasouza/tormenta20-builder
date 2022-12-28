@@ -41,6 +41,7 @@
     <div id="download">
       <button class="btn" (click)="download_sheet()">Download</button>
     </div>
+    
     <basic-stats
       [level]="level"
       [class]="class"
@@ -50,6 +51,21 @@
       [life_points]="life_points"
       [mana_points]="mana_points">
     </basic-stats>
+
+    <weapon-selection
+      [proeficiencies]="proeficiencies"
+      (chosen_weapons_output)="onChosenWeapons($event)">
+    </weapon-selection>
+
+    <armor-selection
+      [proeficiencies]="proeficiencies"
+      (chosen_armor_output)="onChosenArmor($event)">
+    </armor-selection>
+
+    <shield-selection
+      *ngIf="proeficiencies && proeficiencies.includes('Escudos')"
+      (chosen_armor_output)="onChosenShield($event)">
+    </shield-selection>
 
     <base-attributes
       [level]="level"

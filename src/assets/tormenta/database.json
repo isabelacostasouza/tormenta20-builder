@@ -375,7 +375,8 @@
                 },
                 {
                     "poderes": 1,
-                    "habilidades": ["Inspiração +2"]
+                    "habilidades": ["Inspiração +2"],
+                    "remover": ["Inspiração +1"]
                 },
                 {
                     "magias_2": 1,
@@ -390,7 +391,8 @@
                 },
                 {
                     "poderes": 1,
-                    "habilidades": ["Inspiração +3"]
+                    "habilidades": ["Inspiração +3"],
+                    "remover": ["Inspiração +2"]
                 },
                 {
                     "magias_3": 1,
@@ -405,7 +407,8 @@
                 },
                 {
                     "poderes": 1,
-                    "habilidades": ["Inspiração +4"]
+                    "habilidades": ["Inspiração +4"],
+                    "remover": ["Inspiração +3"]
                 },
                 {
                     "magias_4": 1,
@@ -420,7 +423,8 @@
                 },
                 {
                     "poderes": 1,
-                    "habilidades": ["Inspiração +5"]
+                    "habilidades": ["Inspiração +5"],
+                    "remover": ["Inspiração +4"]
                 },
                 {
                     "magias_5": 1,
@@ -1046,7 +1050,8 @@
                 },
                 {
                     "poderes": 1,
-                    "habilidades": ["Ataque furtivo +2d6"]
+                    "habilidades": ["Ataque furtivo +2d6"],
+                    "remover": ["Ataque furtivo +1d6"]
                 },
                 {
                     "poderes": 1,
@@ -1054,14 +1059,16 @@
                 },
                 {
                     "poderes": 1,
-                    "habilidades": ["Ataque furtivo +3d6"]
+                    "habilidades": ["Ataque furtivo +3d6"],
+                    "remover": ["Ataque furtivo +2d6"]
                 },
                 {
                     "poderes": 1
                 },
                 {
                     "poderes": 1,
-                    "habilidades": ["Ataque furtivo +4d6"]
+                    "habilidades": ["Ataque furtivo +4d6"],
+                    "remover": ["Ataque furtivo +3d6"]
                 },
                 {
                     "poderes": 1,
@@ -1069,7 +1076,8 @@
                 },
                 {
                     "poderes": 1,
-                    "habilidades": ["Ataque furtivo +5d6"]
+                    "habilidades": ["Ataque furtivo +5d6"],
+                    "remover": ["Ataque furtivo +4d6"]
                 },
                 {
                     "poderes": 1,
@@ -1077,35 +1085,40 @@
                 },
                 {
                     "poderes": 1,
-                    "habilidades": ["Ataque furtivo +6d6"]
+                    "habilidades": ["Ataque furtivo +6d6"],
+                    "remover": ["Ataque furtivo +5d6"]
                 },
                 {
                     "poderes": 1
                 },
                 {
                     "poderes": 1,
-                    "habilidades": ["Ataque furtivo +7d6"]
+                    "habilidades": ["Ataque furtivo +7d6"],
+                    "remover": ["Ataque furtivo +6d6"]
                 },
                 {
                     "poderes": 1
                 },
                 {
                     "poderes": 1,
-                    "habilidades": ["Ataque furtivo +8d6"]
+                    "habilidades": ["Ataque furtivo +8d6"],
+                    "remover": ["Ataque furtivo +7d6"]
                 },
                 {
                     "poderes": 1
                 },
                 {
                     "poderes": 1,
-                    "habilidades": ["Ataque furtivo +9d6"]
+                    "habilidades": ["Ataque furtivo +9d6"],
+                    "remover": ["Ataque furtivo +8d6"]
                 },
                 {
                     "poderes": 1
                 },
                 {
                     "poderes": 1,
-                    "habilidades": ["Ataque furtivo +10d6"]
+                    "habilidades": ["Ataque furtivo +10d6"],
+                    "remover": ["Ataque furtivo +9d6"]
                 },
                 {
                     "poderes": 1,
@@ -1573,6 +1586,11 @@
         }
     ],
     "deus": [
+        {
+            "nome": "Ateu",
+            "energia": "Neutra",
+            "poderes": []
+        },
         {
             "nome": "Aharadak",
             "energia": "Negativa",
@@ -3560,8 +3578,32 @@
             "subtipo": "Paladino"
         },
         {
-            "nome": "Inspiração",
-            "descricao": "Você pode gastar uma ação padrão e 2 PM para inspirar as pessoas com sua música (ou outro tipo de arte, como dança). Você e todos os seus aliados em alcance curto ganham +1 em testes de perícia até o fim da cena. A cada quatro níveis, pode gastar +2 PM para aumentar o bônus em +1.",
+            "nome": "Inspiração +1",
+            "descricao": "Você pode gastar uma ação padrão e 2 PM para inspirar as pessoas com sua música (ou outro tipo de arte, como dança). Você e todos os seus aliados em alcance curto ganham +1 em testes de perícia até o fim da cena.",
+            "tipo": "Classe",
+            "subtipo": "Bardo"
+        },
+        {
+            "nome": "Inspiração +2",
+            "descricao": "Você pode gastar uma ação padrão e 2 PM para inspirar as pessoas com sua música (ou outro tipo de arte, como dança). Você e todos os seus aliados em alcance curto ganham +2 em testes de perícia até o fim da cena. Você pode gastar +2 PM para aumentar o bônus em +1.",
+            "tipo": "Classe",
+            "subtipo": "Bardo"
+        },
+        {
+            "nome": "Inspiração +3",
+            "descricao": "Você pode gastar uma ação padrão e 2 PM para inspirar as pessoas com sua música (ou outro tipo de arte, como dança). Você e todos os seus aliados em alcance curto ganham +3 em testes de perícia até o fim da cena. Você pode gastar +2 PM para aumentar o bônus em +1 até duas vezes.",
+            "tipo": "Classe",
+            "subtipo": "Bardo"
+        },
+        {
+            "nome": "Inspiração +4",
+            "descricao": "Você pode gastar uma ação padrão e 2 PM para inspirar as pessoas com sua música (ou outro tipo de arte, como dança). Você e todos os seus aliados em alcance curto ganham +4 em testes de perícia até o fim da cena. Você pode gastar +2 PM para aumentar o bônus em +1 até três vezes.",
+            "tipo": "Classe",
+            "subtipo": "Bardo"
+        },
+        {
+            "nome": "Inspiração +5",
+            "descricao": "Você pode gastar uma ação padrão e 2 PM para inspirar as pessoas com sua música (ou outro tipo de arte, como dança). Você e todos os seus aliados em alcance curto ganham +5 em testes de perícia até o fim da cena. Você pode gastar +2 PM para aumentar o bônus em +1 até quatro vezes.",
             "tipo": "Classe",
             "subtipo": "Bardo"
         },
@@ -4863,8 +4905,62 @@
             "subtipo": "Guerreiro"
         },
         {
-            "nome": "Ataque Furtivo",
+            "nome": "Ataque furtivo +1d6",
             "descricao": "Você sabe atingir os pontos vitais de um inimigo distraído. Uma vez por rodada, quando atinge um alvo desprevenido com um ataque corpo a corpo ou em alcance curto, ou um alvo que esteja flanqueando, você causa 1d6 pontos de dano adicional. A cada dois níveis, esse dano adicional aumenta em +1d6. Uma criatura imune a acertos críticos também é imune a ataques furtivos.",
+            "tipo": "Classe",
+            "subtipo": "Ladino"
+        },
+        {
+            "nome": "Ataque furtivo +2d6",
+            "descricao": "Você sabe atingir os pontos vitais de um inimigo distraído. Uma vez por rodada, quando atinge um alvo desprevenido com um ataque corpo a corpo ou em alcance curto, ou um alvo que esteja flanqueando, você causa 1d6 pontos de dano adicional. A cada dois níveis, esse dano adicional aumenta em +2d6. Uma criatura imune a acertos críticos também é imune a ataques furtivos.",
+            "tipo": "Classe",
+            "subtipo": "Ladino"
+        },
+        {
+            "nome": "Ataque furtivo +3d6",
+            "descricao": "Você sabe atingir os pontos vitais de um inimigo distraído. Uma vez por rodada, quando atinge um alvo desprevenido com um ataque corpo a corpo ou em alcance curto, ou um alvo que esteja flanqueando, você causa 1d6 pontos de dano adicional. A cada dois níveis, esse dano adicional aumenta em +3d6. Uma criatura imune a acertos críticos também é imune a ataques furtivos.",
+            "tipo": "Classe",
+            "subtipo": "Ladino"
+        },
+        {
+            "nome": "Ataque furtivo +4d6",
+            "descricao": "Você sabe atingir os pontos vitais de um inimigo distraído. Uma vez por rodada, quando atinge um alvo desprevenido com um ataque corpo a corpo ou em alcance curto, ou um alvo que esteja flanqueando, você causa 1d6 pontos de dano adicional. A cada dois níveis, esse dano adicional aumenta em +4d6. Uma criatura imune a acertos críticos também é imune a ataques furtivos.",
+            "tipo": "Classe",
+            "subtipo": "Ladino"
+        },
+        {
+            "nome": "Ataque furtivo +5d6",
+            "descricao": "Você sabe atingir os pontos vitais de um inimigo distraído. Uma vez por rodada, quando atinge um alvo desprevenido com um ataque corpo a corpo ou em alcance curto, ou um alvo que esteja flanqueando, você causa 1d6 pontos de dano adicional. A cada dois níveis, esse dano adicional aumenta em +5d6. Uma criatura imune a acertos críticos também é imune a ataques furtivos.",
+            "tipo": "Classe",
+            "subtipo": "Ladino"
+        },
+        {
+            "nome": "Ataque furtivo +6d6",
+            "descricao": "Você sabe atingir os pontos vitais de um inimigo distraído. Uma vez por rodada, quando atinge um alvo desprevenido com um ataque corpo a corpo ou em alcance curto, ou um alvo que esteja flanqueando, você causa 1d6 pontos de dano adicional. A cada dois níveis, esse dano adicional aumenta em +6d6. Uma criatura imune a acertos críticos também é imune a ataques furtivos.",
+            "tipo": "Classe",
+            "subtipo": "Ladino"
+        },
+        {
+            "nome": "Ataque furtivo +7d6",
+            "descricao": "Você sabe atingir os pontos vitais de um inimigo distraído. Uma vez por rodada, quando atinge um alvo desprevenido com um ataque corpo a corpo ou em alcance curto, ou um alvo que esteja flanqueando, você causa 1d6 pontos de dano adicional. A cada dois níveis, esse dano adicional aumenta em +7d6. Uma criatura imune a acertos críticos também é imune a ataques furtivos.",
+            "tipo": "Classe",
+            "subtipo": "Ladino"
+        },
+        {
+            "nome": "Ataque furtivo +8d6",
+            "descricao": "Você sabe atingir os pontos vitais de um inimigo distraído. Uma vez por rodada, quando atinge um alvo desprevenido com um ataque corpo a corpo ou em alcance curto, ou um alvo que esteja flanqueando, você causa 1d6 pontos de dano adicional. A cada dois níveis, esse dano adicional aumenta em +8d6. Uma criatura imune a acertos críticos também é imune a ataques furtivos.",
+            "tipo": "Classe",
+            "subtipo": "Ladino"
+        },
+        {
+            "nome": "Ataque furtivo +9d6",
+            "descricao": "Você sabe atingir os pontos vitais de um inimigo distraído. Uma vez por rodada, quando atinge um alvo desprevenido com um ataque corpo a corpo ou em alcance curto, ou um alvo que esteja flanqueando, você causa 1d6 pontos de dano adicional. A cada dois níveis, esse dano adicional aumenta em +9d6. Uma criatura imune a acertos críticos também é imune a ataques furtivos.",
+            "tipo": "Classe",
+            "subtipo": "Ladino"
+        },
+        {
+            "nome": "Ataque furtivo +10d6",
+            "descricao": "Você sabe atingir os pontos vitais de um inimigo distraído. Uma vez por rodada, quando atinge um alvo desprevenido com um ataque corpo a corpo ou em alcance curto, ou um alvo que esteja flanqueando, você causa 10d6 pontos de dano adicional. A cada dois níveis, esse dano adicional aumenta em +1d6. Uma criatura imune a acertos críticos também é imune a ataques furtivos.",
             "tipo": "Classe",
             "subtipo": "Ladino"
         },

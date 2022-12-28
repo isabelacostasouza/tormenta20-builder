@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   levels = Array.from({length: 20}, (_, i) => i+1);
 
   race: any;class: any; origin: any; god: any; level: any; half_level: any;
-  expertises_table: any; proeficiencies: any; origin_bonus: any; default_powers: any; chosen_powers: any; chosen_magic: any;
+  expertises_table: any; proeficiencies: any; origin_bonus: any; default_powers: any; chosen_powers: any; chosen_magic: any; chosen_weapons: any; chosen_armor: any; chosen_shield: any;
 
   total_expertises = 0; life_points = 0; mana_points = 0;
   attributes_modifiers = [0]; attributes_values = [0];
@@ -176,4 +176,17 @@ export class AppComponent implements OnInit {
   onChosenMagic(outputResult: any) {
     this.chosen_magic = outputResult;
   }
+
+  onChosenWeapons(outputResult: any) {
+    this.chosen_weapons = outputResult;
+  }
+
+  onChosenArmor(outputResult: any) {
+    this.chosen_armor = outputResult;
+  }
+
+  onChosenShield(outputResult: any) {
+    this.chosen_shield = outputResult;
+  }
+
 }

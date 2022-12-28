@@ -12,6 +12,9 @@ import { BaseAttributesComponent } from './tormenta/base-attributes/base-attribu
 import { DefaultProficienciesComponent } from './tormenta/default-proficiencies/default-proficiencies.component';
 import { ChosenPowersComponent } from './tormenta/chosen-powers/chosen-powers.component';
 import { ChosenMagicComponent } from './tormenta/chosen-magic/chosen-magic.component';
+import { WeaponSelectionComponent } from './tormenta/weapon-selection/weapon-selection.component';
+import { ArmorSelectionComponent } from './tormenta/armor-selection/armor-selection.component';
+import { ShieldSelectionComponent } from './tormenta/shield-selection/shield-selection.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { ChosenMagicComponent } from './tormenta/chosen-magic/chosen-magic.compo
     BaseAttributesComponent,
     DefaultProficienciesComponent,
     ChosenPowersComponent,
-    ChosenMagicComponent
+    ChosenMagicComponent,
+    WeaponSelectionComponent,
+    ArmorSelectionComponent,
+    ShieldSelectionComponent
   ],
   imports: [
     BrowserModule,

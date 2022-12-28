@@ -1,0 +1,32 @@
+<div id="weapons">
+    <div id="chosen-weapons">
+        <h1>Armas Escolhidas</h1>
+        <p *ngIf="chosen_weapons.length <= 0">Nenhuma arma escolhida</p>
+        <div>
+            <table>
+                <tr *ngFor="let weapon of chosen_weapons; let i = index;">
+                    <td class="name-weapon"> {{ weapon.nome }} </td>
+                    <td class="damage-weapon"> Dano: {{ weapon.dano }} </td>
+                    <td class="range-weapon"> Alcance: {{ weapon.alcance }} </td>
+                    <td class="remove-button">
+                        <button class="remove-weapon" (click)="choose_weapon(i)">-</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="list-weapons">
+        <div>
+            <table>
+                <tr *ngFor="let weapon of weapons; let i = index;" class="weapon-tr">
+                    <td class="name-weapon"> {{ weapon.nome }} </td>
+                    <td class="damage-weapon"> Dano: {{ weapon.dano }} </td>
+                    <td class="range-weapon"> Alcance: {{ weapon.alcance }} </td>
+                    <td class="add-button">
+                        <button class="add-weapon" (click)="remove_weapon(i)">+</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
