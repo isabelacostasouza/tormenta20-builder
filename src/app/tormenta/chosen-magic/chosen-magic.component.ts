@@ -16,6 +16,7 @@ export class ChosenMagicComponent implements OnInit {
   @Input('class') char_class = '';
 
   @Output() chosen_magic_output = new EventEmitter<Object>();
+  @Output() chosen_magic_schools_output = new EventEmitter<Object>();
 
   @SubjectizeProps(["char_class", "char_level"])
   propAB$ = new ReplaySubject(1);
@@ -168,6 +169,8 @@ export class ChosenMagicComponent implements OnInit {
         }
     }
     if(this.chosen_magic_schools.length == 0) { this.all_schools_chosen = false; }
+
+    this.chosen_magic_schools_output.emit(this.chosen_magic_schools);
 
     this.get_available_magics();
   }

@@ -3,7 +3,7 @@
 
     <div class="main_form">
       <p class="select-title">Raça:</p>
-      <select id='races' name='races'  class="select-basics" [(ngModel)]="race">
+      <select id='races' name='races' class="select-basics" [(ngModel)]="race">
         <option *ngFor="let item of races" [value]="item.nome">
           {{item.nome}}
         </option>    
@@ -40,6 +40,13 @@
 
     <div id="download">
       <button class="btn" (click)="download_sheet()">Download</button>
+      <label class="btn btn-2" id="export" (click)="create_export_pdf()">
+        Exportar
+      </label>
+      <label class="btn btn-2">
+        <input id="fileInput" type="file" name="file" (change)="import_char($event)"/>
+        Importar
+      </label>
     </div>
     
     <basic-stats
@@ -51,6 +58,23 @@
       [life_points]="life_points"
       [mana_points]="mana_points">
     </basic-stats>
+
+    <base-attributes
+      [level]="level"
+      [class]="class"
+      [origin]="origin"
+      [god]="god"
+      [race]="race"
+      [extra_attributes]="extra_attributes_import"
+      [modifiers_import]="modifiers_import"
+      
+      (total_expertises_output)="onTotalExpertises($event)"
+      (life_points_output)="onLifePoints($event)"
+      (mana_points_output)="onManaPoints($event)"
+      (attributes_modifiers_output)="onAttributesModifiers($event)"
+      (attributes_values_output)="onAttributesValues($event)"
+      (extra_output_indexes)="onExtraAttributes($event)">
+    </base-attributes>
 
     <weapon-selection
       [proeficiencies]="proeficiencies"
@@ -64,22 +88,8 @@
 
     <shield-selection
       *ngIf="proeficiencies && proeficiencies.includes('Escudos')"
-      (chosen_armor_output)="onChosenShield($event)">
+      (chosen_shield_output)="onChosenShield($event)">
     </shield-selection>
-
-    <base-attributes
-      [level]="level"
-      [class]="class"
-      [origin]="origin"
-      [god]="god"
-      [race]="race"
-      
-      (total_expertises_output)="onTotalExpertises($event)"
-      (life_points_output)="onLifePoints($event)"
-      (mana_points_output)="onManaPoints($event)"
-      (attributes_modifiers_output)="onAttributesModifiers($event)"
-      (attributes_values_output)="onAttributesValues($event)">
-    </base-attributes>
 
     <default-proficiencies
       [class]="class"
@@ -110,7 +120,8 @@
     <chosen-magic
       [level]="level"
       [class]="class"
-      (chosen_magic_output)="onChosenMagic($event)">
+      (chosen_magic_output)="onChosenMagic($event)"
+      (chosen_magic_school_output)="onChosenMagicSchool($event)">
     </chosen-magic>
  
   </div>

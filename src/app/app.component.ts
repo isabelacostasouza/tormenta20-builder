@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import database from '../assets/tormenta/database.json';
 import pericias from '../assets/tormenta/pericias.json';
+import magic_base from '../assets/tormenta/magics.json';
+import char_export from '../assets/tormenta/char_export.json';
 
 import { PDFDocument } from 'pdf-lib';
 import * as download from "downloadjs";
@@ -15,18 +17,21 @@ import * as download from "downloadjs";
 export class AppComponent implements OnInit {
   title = 'tormenta20-builder';
   
+  character = char_export["personagem"];
   races = database["raça"];
   classes = database["classe"];
   origins = database["origem"];
   powers = database["poder"];
   gods = database["deus"];
+  magic = magic_base["magias"];
 
   expertises = pericias["pericias"];
 
   levels = Array.from({length: 20}, (_, i) => i+1);
 
-  race: any;class: any; origin: any; god: any; level: any; half_level: any;
-  expertises_table: any; proeficiencies: any; origin_bonus: any; default_powers: any; chosen_powers: any; chosen_magic: any; chosen_weapons: any; chosen_armor: any; chosen_shield: any;
+  race: any; class: any; origin: any; god: any; level: any; half_level: any;
+  expertises_table: any; extra_attributes: any; proeficiencies: any; origin_bonus: any; default_powers: any; chosen_powers: any; chosen_magic: any; chosen_magic_schools: any; chosen_weapons: any; chosen_armor: any; chosen_shield: any;
+  extra_attributes_import: any; modifiers_import: any;
 
   total_expertises = 0; life_points = 0; mana_points = 0;
   attributes_modifiers = [0]; attributes_values = [0];
@@ -113,6 +118,8 @@ export class AppComponent implements OnInit {
       for(let i = 0; i < this.chosen_powers.length; i++) {
         form.getTextField("undefined_" + (i + 30 + this.default_powers.length).toString()).setText(this.chosen_powers[i]);
       }
+    } else {
+      this.chosen_powers = [];
     }
 
     if(this.chosen_magic) {
@@ -121,9 +128,114 @@ export class AppComponent implements OnInit {
       }
     }
 
+    if(this.chosen_weapons) for(let i = 0; i < this.chosen_weapons.length; i++) {
+      let fields = [('Ataque ' + (i+1).toString()), ('Dano ' + (i+1).toString()), ('Crítico ' + (i+1).toString()), ('Alcance ' + (i+1).toString())]
+      
+      form.getTextField(fields[0]).setText(this.chosen_weapons[i].nome);
+      form.getTextField(fields[1]).setText(this.chosen_weapons[i].dano);
+      form.getTextField(fields[2]).setText(this.chosen_weapons[i].critico);
+      form.getTextField(fields[3]).setText(this.chosen_weapons[i].alcance);
+    }
+
+    if(this.chosen_armor && this.chosen_armor.length > 0) {
+      form.getTextField('Armadura').setText(this.chosen_armor[0].nome.toString());
+      form.getTextField('Bônus na CA 1').setText(this.chosen_armor[0].bonus.toString());
+      form.getTextField('Penalidade 1').setText(this.chosen_armor[0].penalidade.toString());
+    }
+
+    if(this.chosen_shield && this.chosen_shield.length > 0) {
+      form.getTextField('Escudo').setText(this.chosen_shield[0].nome.toString());
+      form.getTextField('Bônus na CA 2').setText(this.chosen_shield[0].bonus.toString());
+      form.getTextField('Penalidade 2').setText(this.chosen_shield[0].penalidade.toString());
+    }
+
+    let power_descriptions = [];
+
+    if(this.default_powers) for(let i = 0; i < this.default_powers.length; i++) {
+      let power = this.powers.filter((element: any) => {
+        return element.nome == this.default_powers[i] });
+      if(power && power.length > 0) power_descriptions.push(power[0]);
+    }
+
+    if(this.chosen_powers) for(let i = 0; i < this.chosen_powers.length; i++) {
+      let power = this.powers.filter((element: any) => {
+        return element.nome == this.chosen_powers[i] });
+      if(power && power.length > 0) power_descriptions.push(power[0]);
+    }
+
+    let power_details_text = "";
+    let magic_details_text = "";
+
+    if(power_descriptions.length > 0) {
+      power_details_text += "PODERES";
+      for(let i = 0; i < power_descriptions.length; i++) {
+        power_details_text += ("\n\nNome: " + power_descriptions[i].nome);
+        power_details_text += ("\nDescricao: " + power_descriptions[i].descricao);
+      }
+      power_details_text += "\n\n\n";
+    }
+
+    if(this.chosen_magic && this.chosen_magic.length > 0) {
+      magic_details_text += "MAGIAS";
+      for(let i = 0; i < this.chosen_magic.length; i++) {
+        magic_details_text += ("\n\nNome: " + this.chosen_magic[i].nome);
+        magic_details_text += ("\nDescricao: " + this.chosen_magic[i].informacao.descricao);
+      }
+    }
+    
+    form.getTextField('detailsPage2').setText(power_details_text);
+    form.getTextField('detailsPage3').setText(magic_details_text);
+
     let pdfBytes = await editable_sheet.save();
 
     download(pdfBytes, "ficha_tormenta.pdf", "application/pdf");
+  }
+
+  create_export_pdf() {    
+    this.character.raca = this.race;
+    this.character.classe = this.class;
+    this.character.origem = this.origin;
+    this.character.deus = this.god;
+    this.character.nivel = this.level;
+    this.character.pericias = this.expertises_table;
+    this.character.atributos = [this.attributes_modifiers, this.attributes_values];
+    this.character.atributos_extra = this.extra_attributes;
+    this.character.escudo = this.chosen_shield;
+    this.character.armadura = this.chosen_armor;
+    this.character.armas = this.chosen_weapons;
+    this.character.magias = this.chosen_magic;
+    this.character.escolas_magia = this.chosen_magic_schools;
+    this.character.poderes = this.chosen_powers;
+
+    var sJson = JSON.stringify(this.character);
+    var element = document.createElement('a');
+    element.setAttribute('href', "data:text/json;charset=UTF-8," + encodeURIComponent(sJson));
+    element.setAttribute('download', "ficha_tormenta_export.json");
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click(); // simulate click
+    document.body.removeChild(element);
+  }
+
+  import_char(event: any) {
+    const reader = new FileReader()
+ 
+    this.handle_file_content(event.target.files[0]);
+  }
+
+  async handle_file_content(file: any) {
+    let character_json = await new Response(file).json();
+
+    this.race = character_json.raca;
+    this.class = character_json.classe;
+    this.origin = character_json.origem;
+    this.god = character_json.deus;
+    this.level = character_json.nivel;
+
+    this.extra_attributes_import = character_json.atributos_extra;
+    this.modifiers_import = character_json.atributos;
+
+    this.updateHalfLevel();
   }
 
   updateHalfLevel() {
@@ -177,6 +289,10 @@ export class AppComponent implements OnInit {
     this.chosen_magic = outputResult;
   }
 
+  onChosenMagicSchool(outputResult: any) {
+    this.chosen_magic_schools = outputResult;
+  }
+
   onChosenWeapons(outputResult: any) {
     this.chosen_weapons = outputResult;
   }
@@ -187,6 +303,10 @@ export class AppComponent implements OnInit {
 
   onChosenShield(outputResult: any) {
     this.chosen_shield = outputResult;
+  }
+
+  onExtraAttributes(outputResult: any) {
+    this.extra_attributes = outputResult;
   }
 
 }

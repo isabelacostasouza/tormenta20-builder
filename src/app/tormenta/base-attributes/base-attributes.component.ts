@@ -17,8 +17,10 @@ export class BaseAttributesComponent implements OnInit {
   @Input('origin') char_origin = '';
   @Input('race') char_race = '';
   @Input('god') char_god = '';
+  @Input('extra_attributes') extra_outputs_import: any;
+  @Input('modifiers_import') modifiers_import: any;
 
-  @SubjectizeProps(["char_class", "char_race", "char_level"])
+  @SubjectizeProps(["char_class", "char_race", "char_level", "extra_outputs_import", "modifiers_import"])
   propAB$ = new ReplaySubject(1);
 
   @Output() total_expertises_output = new EventEmitter<number>();
@@ -26,6 +28,7 @@ export class BaseAttributesComponent implements OnInit {
   @Output() mana_points_output = new EventEmitter<number>();
   @Output() attributes_modifiers_output = new EventEmitter<number[]>();
   @Output() attributes_values_output = new EventEmitter<number[]>();
+  @Output() extra_output_indexes = new EventEmitter<number[]>();
 
   classes = database["classe"];
   races = database["raça"];
@@ -35,6 +38,7 @@ export class BaseAttributesComponent implements OnInit {
   total_expertises = 0;
   extra_attributes = 0;
   free_attributes_cost = 0;
+  extra_attributes_list:any[] = [];
 
   attributes_modifiers = [2, 2, 1, 1, 1, 1];  
   attributes_values = [14, 14, 13, 13, 13, 13];
@@ -52,10 +56,7 @@ export class BaseAttributesComponent implements OnInit {
     this.propAB$.subscribe((changes: any) => {
       setTimeout(() => {
         if(changes[0] == "char_race") {
-          this.attributes_modifiers = [2, 2, 1, 1, 1, 1];  
-          this.attributes_values = [14, 14, 13, 13, 13, 13];
-          this.free_attributes_cost = 0;
-          this.extra_attributes = 0;
+          this.reset_attributes();
     
           this.race_element = this.races.reduce((next: any, element: any) => {
               if (element["nome"] == changes[1]) return element;
@@ -79,9 +80,34 @@ export class BaseAttributesComponent implements OnInit {
         }
         if(changes[0] == "char_level") {
           this.update_basic_stats();
-
         }
-      }, 5);
+        if(changes[0] == "extra_outputs_import") {
+          this.reset_attributes();
+
+          if(this.extra_outputs_import) for(let i = 0; i < this.extra_outputs_import.length; i++) {
+            document.getElementById("extra_attributes")!.getElementsByTagName("input")[this.extra_outputs_import[i]].checked = true;   
+
+            this.select_extra_attribute( { target: { className: (this.extra_outputs_import[i]+" "), checked: true } } );
+          }
+        }
+        if(changes[0] == "modifiers_import") {
+          setTimeout(() => {
+            if(this.modifiers_import) {
+              console.log(this.modifiers_import[1]);
+              console.log(this.attributes_values);
+              for(let i = 0; i < 6; i++) {
+              console.log("init: ", this.modifiers_import[1][i], this.attributes_values[i]);
+                while(this.modifiers_import[1][i] < this.attributes_values[i])
+                  this.downgrade_attribute(i);
+              console.log(this.modifiers_import[1][i], this.attributes_values[i]);
+              }
+              for(let i = 0; i < 6; i++)
+                  while(this.modifiers_import[1][i] > this.attributes_values[i])
+                    this.upgrade_attribute(i);
+            }
+          }, 10);
+        }
+      }, 100);
     });
 
     setTimeout(() => {
@@ -98,6 +124,14 @@ export class BaseAttributesComponent implements OnInit {
     this.attributes_values = [14, 14, 13, 13, 13, 13];
     this.free_attributes_cost = 0;
     this.extra_attributes = 0;
+
+    if(document.getElementById("extra_attributes")) for(let i = 0; i < 6; i++) {
+      let element = document.getElementById("extra_attributes")!.getElementsByTagName("input")[i];
+      if(element && element.checked) {
+        element.checked = false;
+        this.select_extra_attribute( { target: { className: (i+" "), checked: false } } ); 
+      }
+    }
   }
 
   set_elements() {
@@ -153,6 +187,10 @@ export class BaseAttributesComponent implements OnInit {
 
   select_extra_attribute(event: any) {
     var index = event.target.className.split(" ")[0];
+
+    this.extra_attributes_list.push(index);
+    this.extra_output_indexes.emit(this.extra_attributes_list);
+
     if(this.extra_attributes < 3) {
       if(event.target.checked) {
         this.extra_attributes += 1;

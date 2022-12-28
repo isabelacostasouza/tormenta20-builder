@@ -31,6 +31,21 @@
     button {
         width: 100%;
     }
+
+    .btn-2 {
+        width: 48%;
+        margin-top: 10px;
+        background-color: #efefef;
+
+        input {
+            display: none;
+        }
+    }
+
+    #export {
+        margin-right: 1%;
+        margin-left: 1%;
+    }
 }
 
 .result {
