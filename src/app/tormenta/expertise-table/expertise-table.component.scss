@@ -58,6 +58,18 @@ table {
     table-layout: fixed;
     width: 100%;
     margin-left: 5%;
+    background-color: #b9dbb7;
+    border-radius: 15px;
+}
+
+.expertise-numbers {
+    input {
+        margin-left: 5%;
+    }
+}
+
+.spacing {
+    height: 20px;
 }
 
 .larger-table {
@@ -77,6 +89,7 @@ table {
 @media (max-width:1200px) {
     table {
         margin-left: 0;
+        margin-top: 20px;
     }
 }
 
@@ -87,6 +100,10 @@ table {
 
     table {
         margin-left: 0;
+    }
+
+    #table-header {
+        display: none;
     }
     
 }
