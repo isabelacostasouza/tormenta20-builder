@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArmorSelectionComponent } from './armor-selection.component';
+import { SelectWeaponComponent } from './select-weapon.component';
 
-describe('ArmorSelectionComponent', () => {
-  let component: ArmorSelectionComponent;
-  let fixture: ComponentFixture<ArmorSelectionComponent>;
+describe('SelectWeaponComponent', () => {
+  let component: SelectWeaponComponent;
+  let fixture: ComponentFixture<SelectWeaponComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ArmorSelectionComponent ]
+      declarations: [ SelectWeaponComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArmorSelectionComponent);
+    fixture = TestBed.createComponent(SelectWeaponComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

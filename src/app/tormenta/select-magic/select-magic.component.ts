@@ -6,11 +6,11 @@ import database from '../../../assets/tormenta/database.json';
 import magic_database from '../../../assets/tormenta/magics.json';
 
 @Component({
-  selector: 'chosen-magic',
-  templateUrl: './chosen-magic.component.html',
-  styleUrls: ['./chosen-magic.component.scss']
+  selector: 'select-magic',
+  templateUrl: './select-magic.component.html',
+  styleUrls: ['./select-magic.component.scss']
 })
-export class ChosenMagicComponent implements OnInit {
+export class SelectMagicComponent implements OnInit {
 
   @Input('level') char_level: any;
   @Input('class') char_class = '';

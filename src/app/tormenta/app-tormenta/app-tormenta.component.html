@@ -1,0 +1,151 @@
+<div id="body">
+    <div class="app-tormenta row">
+        <div class="col-sm-7">
+
+        <div class="main_form">
+            <p class="select-title">Raça:</p>
+            <select id='races' name='races' class="select-basics" [(ngModel)]="race">
+            <option *ngFor="let item of races" [value]="item.nome">
+                {{item.nome}}
+            </option>    
+            </select>
+            
+            <p class="select-title">Classe: </p>
+            <select id='classes' name='classes' class="select-basics" [(ngModel)]="class">
+            <option *ngFor="let item of classes" [value]="item.nome">
+                {{item.nome}}
+            </option>    
+            </select>
+            
+            <p class="select-title">Origem: </p>
+            <select id='origins' name='origins' class="select-basics" [(ngModel)]="origin">
+            <option *ngFor="let item of origins" [value]="item.nome">
+                {{item.nome}}
+            </option>    
+            </select>
+
+            <p class="select-title">Deus: </p>
+            <select id='gods' name='gods' class="select-basics" [(ngModel)]="god">
+            <option *ngFor="let item of gods" [value]="item.nome">
+                {{item.nome}}
+            </option>    
+            </select>
+            
+            <p class="select-title">Nível: </p>
+            <select id='levels' name='levels' class="select-basics" [(ngModel)]="level" (change)="updateHalfLevel()">
+            <option *ngFor="let item of levels" [value]="item">
+                {{item}}
+            </option>    
+            </select>
+        </div>
+
+        <div id="download">
+            <label class="btn btn-2" id="export" (click)="download_sheet()">
+            Download
+            </label>
+            <label class="btn btn-2">
+            <input id="fileInput" type="file" name="file" (change)="import_char($event)"/>
+            Importar
+            </label>
+        </div>
+        
+        <basic-stats
+            [level]="level"
+            [class]="class"
+            [origin]="origin"
+            [god]="god"
+            [race]="race"
+            [life_points]="life_points"
+            [mana_points]="mana_points">
+        </basic-stats>
+
+        <base-attributes
+            [level]="level"
+            [class]="class"
+            [origin]="origin"
+            [god]="god"
+            [race]="race"
+            [extra_attributes]="extra_attributes_import"
+            [modifiers_import]="modifiers_import"
+            
+            (total_expertises_output)="onTotalExpertises($event)"
+            (life_points_output)="onLifePoints($event)"
+            (mana_points_output)="onManaPoints($event)"
+            (attributes_modifiers_output)="onAttributesModifiers($event)"
+            (attributes_values_output)="onAttributesValues($event)"
+            (extra_output_indexes)="onExtraAttributes($event)">
+        </base-attributes>
+
+        <select-weapon
+            [chosen_weapons_import]="chosen_weapons_import"
+            [proeficiencies]="proeficiencies"
+            (chosen_weapons_output)="onChosenWeapons($event)">
+        </select-weapon>
+
+        <select-armor
+            [chosen_armor_import]="chosen_armor_import"
+            [proeficiencies]="proeficiencies"
+            (chosen_armor_output)="onChosenArmor($event)">
+        </select-armor>
+
+        <select-shield
+            *ngIf="proeficiencies && proeficiencies.includes('Escudos')"
+            [chosen_shield_import]="chosen_shield_import"
+            (chosen_shield_output)="onChosenShield($event)">
+        </select-shield>
+
+        <default-proficiencies
+            [class]="class"
+            (proficiencies_output)="onProeficiencies($event)">
+        </default-proficiencies>
+
+        <origin-bonus
+            [origin]="origin"
+            (origin_bonus)="onOriginBonus($event)">
+        ></origin-bonus>
+
+        <default-powers
+            [level]="level"
+            [race]="race"
+            [class]="class"
+            [origin]="origin"
+            [god]="god"
+            (default_powers)="onDefaultPowers($event)">
+        </default-powers>
+        
+        <select-power
+            [level]="level"chosen_magic_output
+            [class]="class"
+            [chosen_powers_import]="chosen_powers_import"
+            [attributes_modifiers]="attributes_values"
+            (chosen_powers_output)="onChosenPowers($event)">
+        </select-power>
+
+        <select-magic
+            [level]="level"
+            [class]="class"
+            [chosen_magic_import]="chosen_magic_import"
+            [chosen_magic_schools_import]="chosen_magic_schools_import"
+            (chosen_magic_output)="onChosenMagic($event)"
+            (chosen_magic_school_output)="onChosenMagicSchool($event)">
+        </select-magic>
+        
+        </div>
+
+        <div class="col-sm-5 expertises-table">
+        <expertise-table
+            [level]="level"
+            [half_level]="half_level"
+            [total_expertises]="total_expertises"
+            [class]="class"
+            [origin]="origin"
+            [modifiers]="attributes_modifiers"
+            [expertises_import]="expertises_import"
+            
+            (expertises_table_output)="onExpertisesTable($event)">
+        </expertise-table>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,158 @@
+#body {
+    background-image: url('https://wallpaperaccess.com/full/1216331.jpg');
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+.main_form {
+    margin-bottom: 220px;
+    width: 100%;
+
+    button, select {
+        width: 80%;
+        float: right;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+    
+    .row {
+        margin-top: 10%;
+    }
+    
+    p {
+        float: left;
+        margin-top: 0;
+        width: 20%;
+        margin-bottom: 10px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
+
+#download {
+    background-color: #7fcd7f;
+    padding: 10px;
+    margin-bottom: 20px;
+
+    button {
+        width: 100%;
+    }
+
+    .btn-2 {
+        width: 48%;
+        margin-top: 10px;
+        background-color: #efefef;
+
+        input {
+            display: none;
+        }
+    }
+
+    #export {
+        margin-right: 1%;
+        margin-left: 1%;
+    }
+}
+
+.app-tormenta {
+    padding: 5%;
+    padding-right: 6%;
+
+    .label {
+        width: 100%;
+    }
+
+    .attribute {
+        width: 15%;
+        text-align: center;
+        padding: 3px;
+        border: solid;
+        border-radius: 10px;
+        margin-right: 5px;
+    }
+
+    .name {
+        font-weight: bold;
+        margin: 0px;
+    }
+
+    .value {
+        font-size: 40px;
+        margin: 0px;
+    }
+
+    .value_2 {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .btn.focus, .btn:focus, .btn-success.focus, .btn-success:focus{
+        outline: none;
+        box-shadow: none;
+    }
+
+    .green-button {
+        background-color: #2cb704;
+        border: none;
+    }
+
+    .expertises-table {
+        width: 90%;
+        padding: 0;
+        margin-bottom: 50px;
+    }
+
+    .checkbox {
+        margin-top: 8px;
+        margin-right: 10px;
+    }
+
+    #proeficiencias {
+        background-color: lightgray;
+        width: 100%;
+        margin-bottom: 20px;
+        padding: 20px;
+        text-align: center;
+        padding-bottom: 15px;
+        p {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        td {
+            padding-right: 40px;
+        }
+        table {
+            margin-left: 20px;
+        }
+        .proeficiencia, .power, .item {
+            font-weight: 400;
+            display: inline;
+            padding: 0 20px;
+        }
+    }
+}
+
+@media (max-width:600px) {
+    .main_form {
+        p {
+            width: 32%;
+        }
+    }
+
+    .app-tormenta {
+        padding-right: 5%;
+    }
+
+    .expertises-table {
+        margin-left: 5%;
+    }
+
+    .select-title {
+        display: none;
+    }
+
+    .select-basics {
+        width: 100% !important;
+    }
+}

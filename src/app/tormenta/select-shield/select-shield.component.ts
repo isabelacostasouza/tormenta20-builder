@@ -4,11 +4,11 @@ import { SubjectizeProps } from 'subjectize';
 import armors_database from '../../../assets/tormenta/armor.json';
 
 @Component({
-  selector: 'shield-selection',
-  templateUrl: './shield-selection.component.html',
-  styleUrls: ['./shield-selection.component.scss']
+  selector: 'select-shield',
+  templateUrl: './select-shield.component.html',
+  styleUrls: ['./select-shield.component.scss']
 })
-export class ShieldSelectionComponent implements OnInit {
+export class SelectShieldComponent implements OnInit {
 
   @Input('chosen_shield_import') chosen_shield_import: any;
 

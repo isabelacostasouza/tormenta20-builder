@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShieldSelectionComponent } from './shield-selection.component';
+import { SelectPowerComponent } from './select-power.component';
 
-describe('ShieldSelectionComponent', () => {
-  let component: ShieldSelectionComponent;
-  let fixture: ComponentFixture<ShieldSelectionComponent>;
+describe('SelectPowerComponent', () => {
+  let component: SelectPowerComponent;
+  let fixture: ComponentFixture<SelectPowerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShieldSelectionComponent ]
+      declarations: [ SelectPowerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ShieldSelectionComponent);
+    fixture = TestBed.createComponent(SelectPowerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

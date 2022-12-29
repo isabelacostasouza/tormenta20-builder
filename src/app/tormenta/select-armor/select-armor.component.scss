@@ -1,28 +1,4 @@
-#magic_schools {
-    background-color: lightgray;
-    width: 100%;
-    margin-bottom: 20px;
-    padding: 20px;
-    text-align: center;
-    padding-bottom: 15px;
-    margin-top: 20px;
-    p {
-        margin-bottom: 10px;
-        font-weight: bold;
-    }
-    td {
-        padding-right: 10px;
-    }
-    table {
-        width: 100%;
-        table-layout: fixed;
-    }
-    #schools_1 {
-        padding-bottom: 20px;
-    }
-}
-
-#weapons {
+#armor {
     background-color: lightgray;
     // height: 500px;
     margin-bottom: 20px;
@@ -30,7 +6,7 @@
     padding-top: 15px;
 }
 
-#chosen-weapons {
+#chosen-armor {
     margin-top: 20px;
     margin-bottom: 0px;
     margin-top: 10px;
@@ -62,12 +38,12 @@
             margin: 5px;
             padding: 10px 10px 10px 0;
         }
-        .name-weapon, .damage-weapon {
+        .armor-name, .armor-damage {
             padding-left: 10px;
             border-right: 1px solid #808080;
             padding: 10px 10px 10px 20px;
         }
-        .range-weapon {
+        .armor-range {
             padding: 10px 10px 10px 10px;
             background-color: lightgray;
         }
@@ -79,7 +55,7 @@
     }
 }
 
-#list-weapons {
+#list-armor {
     margin-top: 20px;
     background-color: #a5a0a0;
     padding: 20px;
@@ -105,12 +81,12 @@
             padding: 10px 10px 10px 0;
             background-color: lightgray;
         }
-        .name-weapon, .damage-weapon {
+        .armor-name, .armor-damage {
             padding-left: 10px;
             border-right: 1px solid #808080;
             padding: 10px 10px 10px 20px;
         }
-        .range-weapon {
+        .armor-range {
             padding: 10px 10px 10px 10px;
             background-color: lightgray;
         }
@@ -119,34 +95,6 @@
             padding-left: 10px;
             width: 10px;
         }
-    }
-}
-
-.panel-collapse {
-    background-color: #a5a5a5;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    text-align: left;
-    padding: 5px 15px;
-}
-
-h4 {
-    text-align: left;
-    padding-left: 15px;
-}
-
-.panel-group {
-    background-color:  #b9b5b5;
-    padding: 1px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    width:100%;
-
-    a {
-        color: black;
-        text-decoration: none;
-        font-weight: 400;
-        font-size: 15px;
     }
 }
 
@@ -161,13 +109,13 @@ button {
     cursor: pointer;
 }
 
-.remove-weapon {
+.remove-armor {
     border: 2px solid lightgray;
     background-color: #ef0c0c;
     width: 40px;
 }
 
-.add-weapon {
+.add-armor {
     border: 2px solid lightgray;
     background-color: #00bb13;
     width: 40px;

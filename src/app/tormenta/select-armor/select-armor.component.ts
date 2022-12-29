@@ -5,11 +5,11 @@ import { SubjectizeProps } from 'subjectize';
 import armors_database from '../../../assets/tormenta/armor.json';
 
 @Component({
-  selector: 'armor-selection',
-  templateUrl: './armor-selection.component.html',
-  styleUrls: ['./armor-selection.component.scss']
+  selector: 'select-armor',
+  templateUrl: './select-armor.component.html',
+  styleUrls: ['./select-armor.component.scss']
 })
-export class ArmorSelectionComponent implements OnInit {
+export class SelectArmorComponent implements OnInit {
 
   @Input('proeficiencies') char_proeficiencies: any;
   @Input('chosen_armor_import') chosen_armor_import: any;
@@ -18,8 +18,6 @@ export class ArmorSelectionComponent implements OnInit {
 
   @SubjectizeProps(["char_proeficiencies", "chosen_armor_import"])
   propAB$ = new ReplaySubject(1);
-
-  armorChosen = false; shieldChosen = false;
 
   armor_list = armors_database["armaduras"];
 
@@ -30,12 +28,12 @@ export class ArmorSelectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.sort_armor();
-    this.filter_weapons();
+    this.filter_armor();
 
     this.propAB$.subscribe((change: any) => {
       setTimeout(() => {
         this.chosen_armor = [];
-        this.filter_weapons();
+        this.filter_armor();
 
         if(change[0] == "chosen_armor_import" && this.chosen_armor_import[0]) {
           let armor_index = this.armor_list.findIndex((element: any) => element.nome == this.chosen_armor_import[0].nome);
@@ -56,7 +54,7 @@ export class ArmorSelectionComponent implements OnInit {
     });
   }
 
-  filter_weapons() {
+  filter_armor() {
     this.protection = this.light_armor;
     
     if(this.char_proeficiencies && (this.char_proeficiencies.indexOf("Armaduras pesadas") > -1)) this.protection = this.protection.concat(this.heavy_armor);

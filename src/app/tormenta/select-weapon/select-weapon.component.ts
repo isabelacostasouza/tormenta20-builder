@@ -5,11 +5,11 @@ import { SubjectizeProps } from 'subjectize';
 import weapons_database from '../../../assets/tormenta/weapons.json';
 
 @Component({
-  selector: 'weapon-selection',
-  templateUrl: './weapon-selection.component.html',
-  styleUrls: ['./weapon-selection.component.scss']
+  selector: 'select-weapon',
+  templateUrl: './select-weapon.component.html',
+  styleUrls: ['./select-weapon.component.scss']
 })
-export class WeaponSelectionComponent implements OnInit {
+export class SelectWeaponComponent implements OnInit {
 
   @Input('proeficiencies') char_proeficiencies: any;
   @Input('chosen_weapons_import') chosen_weapons_import: any;

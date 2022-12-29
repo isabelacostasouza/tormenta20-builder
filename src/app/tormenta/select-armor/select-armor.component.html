@@ -1,0 +1,32 @@
+<div id="armor">
+    <div id="chosen-armor">
+        <h1>Armadura Escolhida</h1>
+        <p *ngIf="chosen_armor.length <= 0">Nenhuma armadura escolhida</p>
+        <div>
+            <table>
+                <tr *ngFor="let armor of chosen_armor; let i = index;">
+                    <td class="armor-name"> {{ armor.nome }} </td>
+                    <td class="armor-damage"> Bônus: {{ armor.bonus }} </td>
+                    <td class="armor-range"> Penalidade: {{ armor.penalidade }} </td>
+                    <td class="remove-button">
+                        <button class="remove-armor" (click)="remove_armor(i)">-</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="list-armor">
+        <div>
+            <table>
+                <tr *ngFor="let armor of protection; let i = index;" class="armor-tr">
+                    <td class="armor-name"> {{ armor.nome }} </td>
+                    <td class="armor-damage"> Bônus: {{ armor.bonus }} </td>
+                    <td class="armor-range"> Penalidade: {{ armor.penalidade }} </td>
+                    <td class="add-button">
+                        <button class="add-armor" (click)="choose_armor(i)">+</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

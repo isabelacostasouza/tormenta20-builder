@@ -5,11 +5,11 @@ import { SubjectizeProps } from 'subjectize';
 import database from '../../../assets/tormenta/database.json';
 
 @Component({
-  selector: 'chosen-powers',
-  templateUrl: './chosen-powers.component.html',
-  styleUrls: ['./chosen-powers.component.scss']
+  selector: 'select-power',
+  templateUrl: './select-power.component.html',
+  styleUrls: ['./select-power.component.scss']
 })
-export class ChosenPowersComponent implements OnInit {
+export class SelectPowerComponent implements OnInit {
 
   @Input('level') char_level = 0;
   @Input('class') char_class = '';

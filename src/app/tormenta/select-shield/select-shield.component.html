@@ -1,0 +1,32 @@
+<div id="shield">
+    <div id="chosen-shield">
+        <h1>Escudo Escolhido</h1>
+        <p *ngIf="chosen_shield.length <= 0">Nenhum escudo escolhido</p>
+        <div>
+            <table>
+                <tr *ngFor="let shield of chosen_shield; let i = index;">
+                    <td class="shield-name"> {{ shield.nome }} </td>
+                    <td class="shield-damage"> Bônus: {{ shield.bonus }} </td>
+                    <td class="shield-range"> Penalidade: {{ shield.penalidade }} </td>
+                    <td class="remove-button">
+                        <button class="remove-shield" (click)="remove_shield(i)">-</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="list-shield">
+        <div>
+            <table>
+                <tr *ngFor="let shield of shield_list; let i = index;" class="shield-tr">
+                    <td class="shield-name"> {{ shield.nome }} </td>
+                    <td class="shield-damage"> Bônus: {{ shield.bonus }} </td>
+                    <td class="shield-range"> Penalidade: {{ shield.penalidade }} </td>
+                    <td class="add-button">
+                        <button class="add-shield" (click)="choose_shield(i)">+</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

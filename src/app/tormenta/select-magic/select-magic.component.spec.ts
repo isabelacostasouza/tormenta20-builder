@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChosenPowersComponent } from './chosen-powers.component';
+import { SelectMagicComponent } from './select-magic.component';
 
-describe('ChosenPowersComponent', () => {
-  let component: ChosenPowersComponent;
-  let fixture: ComponentFixture<ChosenPowersComponent>;
+describe('SelectMagicComponent', () => {
+  let component: SelectMagicComponent;
+  let fixture: ComponentFixture<SelectMagicComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChosenPowersComponent ]
+      declarations: [ SelectMagicComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChosenPowersComponent);
+    fixture = TestBed.createComponent(SelectMagicComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

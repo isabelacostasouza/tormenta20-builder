@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChosenMagicComponent } from './chosen-magic.component';
+import { AppTormentaComponent } from './app-tormenta.component';
 
-describe('ChosenMagicComponent', () => {
-  let component: ChosenMagicComponent;
-  let fixture: ComponentFixture<ChosenMagicComponent>;
+describe('AppTormentaComponent', () => {
+  let component: AppTormentaComponent;
+  let fixture: ComponentFixture<AppTormentaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChosenMagicComponent ]
+      declarations: [ AppTormentaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChosenMagicComponent);
+    fixture = TestBed.createComponent(AppTormentaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
