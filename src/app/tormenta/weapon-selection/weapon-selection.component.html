@@ -9,7 +9,7 @@
                     <td class="damage-weapon"> Dano: {{ weapon.dano }} </td>
                     <td class="range-weapon"> Alcance: {{ weapon.alcance }} </td>
                     <td class="remove-button">
-                        <button class="remove-weapon" (click)="choose_weapon(i)">-</button>
+                        <button class="remove-weapon" (click)="remove_weapon(i)">-</button>
                     </td>
                 </tr>
             </table>
@@ -23,7 +23,7 @@
                     <td class="damage-weapon"> Dano: {{ weapon.dano }} </td>
                     <td class="range-weapon"> Alcance: {{ weapon.alcance }} </td>
                     <td class="add-button">
-                        <button class="add-weapon" (click)="remove_weapon(i)">+</button>
+                        <button class="add-weapon" (click)="choose_weapon(i)">+</button>
                     </td>
                 </tr>
             </table>

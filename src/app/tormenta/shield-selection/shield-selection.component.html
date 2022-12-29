@@ -9,7 +9,7 @@
                     <td class="damage-weapon"> Bônus: {{ shield.bonus }} </td>
                     <td class="range-weapon"> Penalidade: {{ shield.penalidade }} </td>
                     <td class="remove-button">
-                        <button class="remove-weapon" (click)="choose_shield(i)">-</button>
+                        <button class="remove-weapon" (click)="remove_shield(i)">-</button>
                     </td>
                 </tr>
             </table>
@@ -23,7 +23,7 @@
                     <td class="damage-weapon"> Bônus: {{ shield.bonus }} </td>
                     <td class="range-weapon"> Penalidade: {{ shield.penalidade }} </td>
                     <td class="add-button">
-                        <button class="add-weapon" (click)="remove_shield(i)">+</button>
+                        <button class="add-weapon" (click)="choose_shield(i)">+</button>
                     </td>
                 </tr>
             </table>

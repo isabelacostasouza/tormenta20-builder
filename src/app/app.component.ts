@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
 
   race: any; class: any; origin: any; god: any; level: any; half_level: any;
   expertises_table: any; extra_attributes: any; proeficiencies: any; origin_bonus: any; default_powers: any; chosen_powers: any; chosen_magic: any; chosen_magic_schools: any; chosen_weapons: any; chosen_armor: any; chosen_shield: any;
-  extra_attributes_import: any; modifiers_import: any;
+  extra_attributes_import: any; modifiers_import: any; chosen_weapons_import: any; chosen_armor_import: any; chosen_shield_import: any; chosen_powers_import: any; chosen_magic_import: any; chosen_magic_schools_import: any; expertises_import: any;
 
   total_expertises = 0; life_points = 0; mana_points = 0;
   attributes_modifiers = [0]; attributes_values = [0];
@@ -213,7 +213,7 @@ export class AppComponent implements OnInit {
     element.setAttribute('download', "ficha_tormenta_export.json");
     element.style.display = 'none';
     document.body.appendChild(element);
-    element.click(); // simulate click
+    element.click();
     document.body.removeChild(element);
   }
 
@@ -234,6 +234,16 @@ export class AppComponent implements OnInit {
 
     this.extra_attributes_import = character_json.atributos_extra;
     this.modifiers_import = character_json.atributos;
+
+    setTimeout(() => {
+      this.chosen_weapons_import = character_json.armas;    
+      this.chosen_armor_import = character_json.armadura;
+      this.chosen_shield_import = character_json.escudo;
+      this.chosen_powers_import = character_json.poderes;  
+      this.chosen_magic_schools_import = character_json.escolas_magia;
+      this.chosen_magic_import = character_json.magias;
+      this.expertises_import = character_json.pericias;
+    }, 10);
 
     this.updateHalfLevel();
   }

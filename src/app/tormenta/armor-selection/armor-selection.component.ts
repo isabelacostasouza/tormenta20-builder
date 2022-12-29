@@ -12,10 +12,11 @@ import armors_database from '../../../assets/tormenta/armor.json';
 export class ArmorSelectionComponent implements OnInit {
 
   @Input('proeficiencies') char_proeficiencies: any;
+  @Input('chosen_armor_import') chosen_armor_import: any;
 
   @Output() chosen_armor_output = new EventEmitter<Object>();
 
-  @SubjectizeProps(["char_proeficiencies"])
+  @SubjectizeProps(["char_proeficiencies", "chosen_armor_import"])
   propAB$ = new ReplaySubject(1);
 
   armorChosen = false; shieldChosen = false;
@@ -35,6 +36,11 @@ export class ArmorSelectionComponent implements OnInit {
       setTimeout(() => {
         this.chosen_armor = [];
         this.filter_weapons();
+
+        if(change[0] == "chosen_armor_import" && this.chosen_armor_import[0]) {
+          let armor_index = this.armor_list.findIndex((element: any) => element.nome == this.chosen_armor_import[0].nome);
+          this.choose_armor(armor_index);
+        }
 
         this.chosen_armor_output.emit(this.chosen_armor);
       }, 5);
@@ -56,7 +62,7 @@ export class ArmorSelectionComponent implements OnInit {
     if(this.char_proeficiencies && (this.char_proeficiencies.indexOf("Armaduras pesadas") > -1)) this.protection = this.protection.concat(this.heavy_armor);
   }
 
-  choose_armor(index:any) {
+  remove_armor(index:any) {
     this.protection.push(this.chosen_armor[index]);
     this.chosen_armor.splice(index, 1);
     
@@ -69,7 +75,7 @@ export class ArmorSelectionComponent implements OnInit {
     this.chosen_armor_output.emit(this.chosen_armor);
   }
 
-  remove_armor(index:any) {
+  choose_armor(index:any) {
     this.chosen_armor.push(this.protection[index]);
     this.protection.splice(index, 1);
 

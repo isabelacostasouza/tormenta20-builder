@@ -14,11 +14,13 @@ export class ChosenMagicComponent implements OnInit {
 
   @Input('level') char_level: any;
   @Input('class') char_class = '';
+  @Input('chosen_magic_import') chosen_magic_import: any;
+  @Input('chosen_magic_schools_import') chosen_magic_schools_import: any;
 
   @Output() chosen_magic_output = new EventEmitter<Object>();
-  @Output() chosen_magic_schools_output = new EventEmitter<Object>();
+  @Output() chosen_magic_school_output = new EventEmitter<Object>();
 
-  @SubjectizeProps(["char_class", "char_level"])
+  @SubjectizeProps(["char_class", "char_level", "chosen_magic_import", "chosen_magic_schools_import"])
   propAB$ = new ReplaySubject(1);
 
   classes = database["classe"];
@@ -72,6 +74,26 @@ export class ChosenMagicComponent implements OnInit {
         this.reset_magic_schools();
         this.get_magic_number();
         this.get_available_magics();
+
+        if(change[0] == "chosen_magic_import" && this.chosen_magic_import) {
+          setTimeout(() => {
+            this.chosen_magic_import.forEach(async (magic: any) => {
+              let magic_index = this.magics_list.findIndex((element: any) => element.nome == magic.nome);
+              this.choose_magic_index(magic_index);
+            });
+          }, 10);
+        }
+        
+        if(change[0] == "chosen_magic_schools_import" && this.chosen_magic_schools_import) {
+          let schools_checkbox = document.getElementsByClassName('magic-schools-checkbox');
+
+          this.chosen_magic_schools_import.forEach(async (school: any) => {
+            let school_index = this.magic_schools.findIndex((element: any) => element == school);
+            
+            (schools_checkbox[school_index] as HTMLInputElement).checked = true;
+            this.select_magic_school({ target: { id: school_index, checked: true } });
+          });
+        }
       }, 5);
     });
   }
@@ -170,13 +192,17 @@ export class ChosenMagicComponent implements OnInit {
     }
     if(this.chosen_magic_schools.length == 0) { this.all_schools_chosen = false; }
 
-    this.chosen_magic_schools_output.emit(this.chosen_magic_schools);
+    this.chosen_magic_school_output.emit(this.chosen_magic_schools);
 
     this.get_available_magics();
   }
 
   choose_magic(event: any) {
     let index = event.path[0].parentElement.parentElement.getElementsByClassName("panel-group")[0].id.split("accordionMagic2_")[1];
+    this.choose_magic_index(index);
+  }
+
+  choose_magic_index(index: any) {
     let new_magic = this.magics_list[index];
     let circle_index = parseInt(new_magic.informacao.circulo) - 1;
 

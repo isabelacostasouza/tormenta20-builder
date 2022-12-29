@@ -77,17 +77,20 @@
     </base-attributes>
 
     <weapon-selection
+      [chosen_weapons_import]="chosen_weapons_import"
       [proeficiencies]="proeficiencies"
       (chosen_weapons_output)="onChosenWeapons($event)">
     </weapon-selection>
 
     <armor-selection
+      [chosen_armor_import]="chosen_armor_import"
       [proeficiencies]="proeficiencies"
       (chosen_armor_output)="onChosenArmor($event)">
     </armor-selection>
 
     <shield-selection
       *ngIf="proeficiencies && proeficiencies.includes('Escudos')"
+      [chosen_shield_import]="chosen_shield_import"
       (chosen_shield_output)="onChosenShield($event)">
     </shield-selection>
 
@@ -113,6 +116,7 @@
     <chosen-powers
       [level]="level"chosen_magic_output
       [class]="class"
+      [chosen_powers_import]="chosen_powers_import"
       [attributes_modifiers]="attributes_values"
       (chosen_powers_output)="onChosenPowers($event)">
     </chosen-powers>
@@ -120,6 +124,8 @@
     <chosen-magic
       [level]="level"
       [class]="class"
+      [chosen_magic_import]="chosen_magic_import"
+      [chosen_magic_schools_import]="chosen_magic_schools_import"
       (chosen_magic_output)="onChosenMagic($event)"
       (chosen_magic_school_output)="onChosenMagicSchool($event)">
     </chosen-magic>
@@ -134,6 +140,7 @@
       [class]="class"
       [origin]="origin"
       [modifiers]="attributes_modifiers"
+      [expertises_import]="expertises_import"
       
       (expertises_table_output)="onExpertisesTable($event)">
     </expertise-table>

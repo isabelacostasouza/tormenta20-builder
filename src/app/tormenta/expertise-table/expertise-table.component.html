@@ -10,7 +10,7 @@
     </tr>
     <ng-container *ngFor="let i of expertises_indexes">
       <tr>
-        <td><input class="checkbox {{i}}" (click)="select_expertise($event)" type="checkbox"></td>
+        <td><input class="expertise-checkbox checkbox {{i}}" (click)="select_expertise($event)" type="checkbox"></td>
         <td class="expertise-name">{{expertises[i].nome}}</td>
         <td></td>
         <td></td>

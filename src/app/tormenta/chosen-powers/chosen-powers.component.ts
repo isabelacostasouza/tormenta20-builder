@@ -14,10 +14,11 @@ export class ChosenPowersComponent implements OnInit {
   @Input('level') char_level = 0;
   @Input('class') char_class = '';
   @Input('attributes_modifiers') char_modifiers = [0];
+  @Input('chosen_powers_import') chosen_powers_import = [0];
 
   @Output() chosen_powers_output = new EventEmitter<Object>();
 
-  @SubjectizeProps(["char_level", "char_class", "char_modifiers"])
+  @SubjectizeProps(["char_level", "char_class", "char_modifiers", "chosen_powers_import"])
   propAB$ = new ReplaySubject(1);
 
   constructor() { }
@@ -47,6 +48,14 @@ export class ChosenPowersComponent implements OnInit {
         this.getNumberAvailablePowers();
         this.getAvailablePowers();
         this.enable_powers();
+
+        setTimeout(() => {
+          if(change[0] == "chosen_powers_import")
+            for(let i = 0; i < this.chosen_powers_import.length; i++) {
+              let powers_index = this.powers_list.findIndex((element: any) => element == this.chosen_powers_import[i]);
+              this.choose_power_index(0);
+            }
+        }, 10);
       }, 5);
     });
 
@@ -93,9 +102,9 @@ export class ChosenPowersComponent implements OnInit {
     }
   }
 
-  choose_power(event: any) {
+  choose_power_index(index: any) {
     if(this.available_powers > this.number_chosen_powers) {
-      let power_index = parseInt(event.path[0].parentElement.parentElement.getElementsByClassName("panel-group")[0].id.split("accordion3_")[1]);
+      let power_index = parseInt(index);
       this.chosen_powers.push(this.powers_list[power_index]);
       this.chosen_powers_description.push(this.powers_description[power_index]);
       this.powers_list.splice(power_index, 1);
@@ -109,6 +118,10 @@ export class ChosenPowersComponent implements OnInit {
       }
     }
     this.chosen_powers_output.emit(this.chosen_powers);
+  }
+
+  choose_power(event: any) {
+    this.choose_power_index(event.path[0].parentElement.parentElement.getElementsByClassName("panel-group")[0].id.split("accordion3_")[1]);
   }
 
   remove_power(event: any) {

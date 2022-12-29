@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { SubjectizeProps } from 'subjectize';
+import { ReplaySubject } from 'rxjs';
 
 import database from '../../../assets/tormenta/database.json';
 import attributes from '../../../assets/tormenta/attributes.json';
-import { SubjectizeProps } from 'subjectize';
-import { ReplaySubject } from 'rxjs';
 
 @Component({
   selector: 'base-attributes',
@@ -93,14 +93,9 @@ export class BaseAttributesComponent implements OnInit {
         if(changes[0] == "modifiers_import") {
           setTimeout(() => {
             if(this.modifiers_import) {
-              console.log(this.modifiers_import[1]);
-              console.log(this.attributes_values);
-              for(let i = 0; i < 6; i++) {
-              console.log("init: ", this.modifiers_import[1][i], this.attributes_values[i]);
+              for(let i = 0; i < 6; i++)
                 while(this.modifiers_import[1][i] < this.attributes_values[i])
                   this.downgrade_attribute(i);
-              console.log(this.modifiers_import[1][i], this.attributes_values[i]);
-              }
               for(let i = 0; i < 6; i++)
                   while(this.modifiers_import[1][i] > this.attributes_values[i])
                     this.upgrade_attribute(i);

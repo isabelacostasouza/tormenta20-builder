@@ -1,4 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { SubjectizeProps } from 'subjectize';
+import { ReplaySubject } from 'rxjs';
 
 import pericias from '../../../assets/tormenta/pericias.json';
 import database from '../../../assets/tormenta/database.json';
@@ -16,8 +18,12 @@ export class ExpertiseTableComponent implements OnInit {
   @Input('class') char_class = '';
   @Input('origin') char_origin = '';
   @Input('modifiers') modifiers = [0];
+  @Input('expertises_import') expertises_import: any;
 
   @Output() expertises_table_output = new EventEmitter<Object>();
+
+  @SubjectizeProps(["char_class", "char_origin", "expertises_import"])
+  propAB$ = new ReplaySubject(1);
 
   used_expertises = 0;
 
@@ -38,6 +44,37 @@ export class ExpertiseTableComponent implements OnInit {
     if(screen.width < 1200) {
       document.getElementsByTagName("table")[0].classList.add("larger-table");
     }
+
+    this.propAB$.subscribe((changes: any) => {
+      setTimeout(() => {
+        if(changes[0] == "char_class" || changes[0] == "char_origin") {
+          this.used_expertises = 0;
+          this.train = Array.from({length: 30}, (_) => 0);
+          this.others = Array.from({length: 30}, (_) => 0);
+
+          this.uncheck_expertises();
+          this.set_elements();
+          this.check_default_expertises();
+        }
+        if(changes[0] == "expertises_import" && this.expertises_import) {
+          setTimeout(() => {
+            this.used_expertises = 0;
+          this.train = Array.from({length: 30}, (_) => 0);
+          this.others = Array.from({length: 30}, (_) => 0);
+
+          this.uncheck_expertises();
+          this.set_elements();
+          this.check_default_expertises();
+
+          let expertises = document.getElementsByClassName('expertise-checkbox');
+          for(let i = 0; i < this.expertises_import.train.length; i++)
+            if(this.expertises_import.train[i] > this.train[i] && !(expertises[i] as HTMLInputElement).checked)
+              (expertises[i] as HTMLInputElement).click();
+          }, 100);
+          
+        }
+      });
+    });
 
     setTimeout(() => {
       this.set_elements();
@@ -60,8 +97,18 @@ export class ExpertiseTableComponent implements OnInit {
   }
 
   check_default_expertises() {
+    let checked_checkboxes = document.getElementsByClassName('default_expertise');
+    for(let i = 0; i < checked_checkboxes.length; i++) {
+      (checked_checkboxes[i] as HTMLInputElement).checked = false;
+      (checked_checkboxes[i] as HTMLInputElement).disabled = false;
+      (checked_checkboxes[i] as HTMLInputElement).classList.remove("default_expertise");
+    }
+
+    this.set_elements();
+
     let checkboxes = document.getElementsByClassName('checkbox');
     let pericias_classe = this.class_element.pericia.concat(this.origin_element.pericia);
+
     for(let i = 0; i < pericias_classe.length; i++) {
       let stats_pericia = this.expertises.reduce((next: any, element: any) => {
         if (element["nome"] == pericias_classe[i])
@@ -81,6 +128,15 @@ export class ExpertiseTableComponent implements OnInit {
       }
     }
     this.expertises_table_output.emit(this.set_expertises_object());
+  }
+
+  uncheck_expertises() {
+    let expertises = document.getElementsByClassName('expertise-checkbox');
+    
+    for(let i = 0; i < expertises.length; i++) {
+      (expertises[i] as HTMLInputElement).disabled = false;
+      (expertises[i] as HTMLInputElement).checked = false;
+    }
   }
 
   select_expertise(event: any) {
