@@ -10,11 +10,12 @@ import { OriginBonusComponent } from './tormenta/origin-bonus/origin-bonus.compo
 import { DefaultPowersComponent } from './tormenta/default-powers/default-powers.component';
 import { BaseAttributesComponent } from './tormenta/base-attributes/base-attributes.component';
 import { DefaultProficienciesComponent } from './tormenta/default-proficiencies/default-proficiencies.component';
-import { ChosenPowersComponent } from './tormenta/chosen-powers/chosen-powers.component';
-import { ChosenMagicComponent } from './tormenta/chosen-magic/chosen-magic.component';
-import { WeaponSelectionComponent } from './tormenta/weapon-selection/weapon-selection.component';
-import { ArmorSelectionComponent } from './tormenta/armor-selection/armor-selection.component';
-import { ShieldSelectionComponent } from './tormenta/shield-selection/shield-selection.component';
+import { SelectPowerComponent } from './tormenta/select-power/select-power.component';
+import { SelectWeaponComponent } from './tormenta/select-weapon/select-weapon.component';
+import { SelectArmorComponent } from './tormenta/select-armor/select-armor.component';
+import { SelectShieldComponent } from './tormenta/select-shield/select-shield.component';
+import { SelectMagicComponent } from './tormenta/select-magic/select-magic.component';
+import { AppTormentaComponent } from './tormenta/app-tormenta/app-tormenta.component';
 
 @NgModule({
   declarations: [
@@ -25,11 +26,12 @@ import { ShieldSelectionComponent } from './tormenta/shield-selection/shield-sel
     DefaultPowersComponent,
     BaseAttributesComponent,
     DefaultProficienciesComponent,
-    ChosenPowersComponent,
-    ChosenMagicComponent,
-    WeaponSelectionComponent,
-    ArmorSelectionComponent,
-    ShieldSelectionComponent
+    SelectPowerComponent,
+    SelectMagicComponent,
+    SelectWeaponComponent,
+    SelectArmorComponent,
+    SelectShieldComponent,
+    AppTormentaComponent,
   ],
   imports: [
     BrowserModule,
