@@ -39,9 +39,8 @@
     </div>
 
     <div id="download">
-      <button class="btn" (click)="download_sheet()">Download</button>
-      <label class="btn btn-2" id="export" (click)="create_export_pdf()">
-        Exportar
+      <label class="btn btn-2" id="export" (click)="download_sheet()">
+        Download
       </label>
       <label class="btn btn-2">
         <input id="fileInput" type="file" name="file" (change)="import_char($event)"/>

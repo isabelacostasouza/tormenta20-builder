@@ -186,12 +186,17 @@ export class AppComponent implements OnInit {
     form.getTextField('detailsPage2').setText(power_details_text);
     form.getTextField('detailsPage3').setText(magic_details_text);
 
+    this.set_char_data();
+    let char_string = JSON.stringify(this.character);
+    
+    editable_sheet.setSubject(char_string);
+
     let pdfBytes = await editable_sheet.save();
 
     download(pdfBytes, "ficha_tormenta.pdf", "application/pdf");
   }
 
-  create_export_pdf() {    
+  set_char_data() {
     this.character.raca = this.race;
     this.character.classe = this.class;
     this.character.origem = this.origin;
@@ -206,6 +211,10 @@ export class AppComponent implements OnInit {
     this.character.magias = this.chosen_magic;
     this.character.escolas_magia = this.chosen_magic_schools;
     this.character.poderes = this.chosen_powers;
+  }
+
+  create_export_pdf() {    
+    this.set_char_data();
 
     var sJson = JSON.stringify(this.character);
     var element = document.createElement('a');
@@ -217,15 +226,19 @@ export class AppComponent implements OnInit {
     document.body.removeChild(element);
   }
 
-  import_char(event: any) {
-    const reader = new FileReader()
- 
-    this.handle_file_content(event.target.files[0]);
+  async import_char(event: any) { 
+    let file = event.target.files[0];
+
+    if(file.type == "application/pdf") {
+      const pdfDocument = await PDFDocument.load(await file.arrayBuffer());
+    
+      let character_json = pdfDocument.getSubject();
+      if(character_json) this.update_char_import(JSON.parse(character_json));
+    } else if(file.type == "application/json")
+      this.update_char_import(await new Response(file).json());
   }
 
-  async handle_file_content(file: any) {
-    let character_json = await new Response(file).json();
-
+  update_char_import(character_json: any) {
     this.race = character_json.raca;
     this.class = character_json.classe;
     this.origin = character_json.origem;
