@@ -34,7 +34,9 @@ export class AppTormentaComponent implements OnInit {
   expertises_table: any; extra_attributes: any; proeficiencies: any; origin_bonus: any; default_powers: any; chosen_powers: any; chosen_magic: any; chosen_magic_schools: any; chosen_weapons: any; chosen_armor: any; chosen_shield: any;
   extra_attributes_import: any; modifiers_import: any; chosen_weapons_import: any; chosen_armor_import: any; chosen_shield_import: any; chosen_powers_import: any; chosen_magic_import: any; chosen_magic_schools_import: any; expertises_import: any;
 
-  total_expertises = 0; life_points = 0; mana_points = 0;
+  defense_data = [0, 0, 0];
+
+  total_expertises = 0; life_points = 0; mana_points = 0; defense_points = 0; extra_defense_points = 0;
   attributes_modifiers = [0]; attributes_values = [0];
 
   async ngOnInit() {
@@ -212,6 +214,7 @@ export class AppTormentaComponent implements OnInit {
     this.character.magias = this.chosen_magic;
     this.character.escolas_magia = this.chosen_magic_schools;
     this.character.poderes = this.chosen_powers;
+    this.character.defesa_extra = this.extra_defense_points;
   }
 
   create_export_pdf() {    
@@ -245,6 +248,7 @@ export class AppTormentaComponent implements OnInit {
     this.origin = character_json.origem;
     this.god = character_json.deus;
     this.level = character_json.nivel;
+    if(character_json.defesa_extra) this.extra_defense_points = character_json.defesa_extra;
 
     this.extra_attributes_import = character_json.atributos_extra;
     this.modifiers_import = character_json.atributos;
@@ -260,6 +264,13 @@ export class AppTormentaComponent implements OnInit {
     }, 10);
 
     this.updateHalfLevel();
+  }
+
+  updateTotalDefense() {
+    this.defense_points = 10 + this.attributes_modifiers[1];
+    
+    if(this.chosen_armor && this.chosen_armor.length > 0) this.defense_points += parseInt(this.chosen_armor[0].bonus);
+    if(this.chosen_shield && this.chosen_shield.length > 0) this.defense_points += parseInt(this.chosen_shield[0].bonus);
   }
 
   updateHalfLevel() {
@@ -283,6 +294,8 @@ export class AppTormentaComponent implements OnInit {
 
   onAttributesModifiers(outputResult: any) {
     this.attributes_modifiers = outputResult; 
+
+    this.updateTotalDefense();
   }
 
   onAttributesValues(outputResult: any) {
@@ -323,10 +336,14 @@ export class AppTormentaComponent implements OnInit {
 
   onChosenArmor(outputResult: any) {
     this.chosen_armor = outputResult;
+
+    this.updateTotalDefense();
   }
 
   onChosenShield(outputResult: any) {
     this.chosen_shield = outputResult;
+
+    this.updateTotalDefense();
   }
 
   onExtraAttributes(outputResult: any) {

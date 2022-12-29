@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ExpertiseTableComponent } from './tormenta/expertise-table/expertise-table.component';
-import { BasicStatsComponent } from './tormenta/basic-stats/basic-stats.component';
 import { OriginBonusComponent } from './tormenta/origin-bonus/origin-bonus.component';
 import { DefaultPowersComponent } from './tormenta/default-powers/default-powers.component';
 import { BaseAttributesComponent } from './tormenta/base-attributes/base-attributes.component';
@@ -21,7 +20,6 @@ import { AppTormentaComponent } from './tormenta/app-tormenta/app-tormenta.compo
   declarations: [
     AppComponent,
     ExpertiseTableComponent,
-    BasicStatsComponent,
     OriginBonusComponent,
     DefaultPowersComponent,
     BaseAttributesComponent,

@@ -1,3 +1,65 @@
+<div class="row">      
+  <div class="attribute">
+    <p class="name">For</p>
+    <p class="value">{{attributes_modifiers[0]}}</p>
+    <p class="value_2">{{attributes_values[0]}}</p>
+    <div class="btn-group btn-group-toggle force" data-toggle="buttons">
+      <label class="btn btn-danger" (click)="downgrade_attribute(0)"><input type="radio" name="options" autocomplete="off"> - </label>
+      <label class="btn btn-success disabled" (click)="upgrade_attribute(0)"><input type="radio" name="options" autocomplete="off"> + </label>
+    </div>
+  </div>
+  
+  <div class="attribute">
+    <p class="name">Des</p>
+    <p class="value">{{attributes_modifiers[1]}}</p>
+    <p class="value_2">{{attributes_values[1]}}</p>
+    <div class="btn-group btn-group-toggle dexterity" data-toggle="buttons">
+      <label class="btn btn-danger" (click)="downgrade_attribute(1)"><input type="radio" name="options" autocomplete="off"> - </label>
+      <label class="btn btn-success disabled" (click)="upgrade_attribute(1)"><input type="radio" name="options" autocomplete="off"> + </label>
+    </div>
+  </div>
+  
+  <div class="attribute">
+    <p class="name">Con</p>
+    <p class="value">{{attributes_modifiers[2]}}</p>
+    <p class="value_2">{{attributes_values[2]}}</p>
+    <div class="btn-group btn-group-toggle constitution" data-toggle="buttons">
+      <label class="btn btn-danger" (click)="downgrade_attribute(2)"><input type="radio" name="options" autocomplete="off"> - </label>
+      <label class="btn btn-success disabled" (click)="upgrade_attribute(2)"><input type="radio" name="options" autocomplete="off"> + </label>
+    </div>
+  </div>
+  
+  <div class="attribute last_3">
+    <p class="name">Int</p>
+    <p class="value">{{attributes_modifiers[3]}}</p>
+    <p class="value_2">{{attributes_values[3]}}</p>
+    <div class="btn-group btn-group-toggle intelligence" data-toggle="buttons">
+      <label class="btn btn-danger" (click)="downgrade_attribute(3)"><input type="radio" name="options" autocomplete="off"> - </label>
+      <label class="btn btn-success disabled" (click)="upgrade_attribute(3)"><input type="radio" name="options" autocomplete="off"> + </label>
+    </div>
+  </div>
+  
+  <div class="attribute last_3">
+    <p class="name">Sab</p>
+    <p class="value">{{attributes_modifiers[4]}}</p>
+    <p class="value_2">{{attributes_values[4]}}</p>
+    <div class="btn-group btn-group-toggle wisdom" data-toggle="buttons">
+      <label class="btn btn-danger" (click)="downgrade_attribute(4)"><input type="radio" name="options" autocomplete="off"> - </label>
+      <label class="btn btn-success disabled" (click)="upgrade_attribute(4)"><input type="radio" name="options" autocomplete="off"> + </label>
+    </div>
+  </div>
+  
+  <div class="attribute last_3">
+    <p class="name">Car</p>
+    <p class="value">{{attributes_modifiers[5]}}</p>
+    <p class="value_2">{{attributes_values[5]}}</p>
+    <div class="btn-group btn-group-toggle charisma" data-toggle="buttons">
+      <label class="btn btn-danger" (click)="downgrade_attribute(5)"><input type="radio" name="options" autocomplete="off"> - </label>
+      <label class="btn btn-success disabled" (click)="upgrade_attribute(5)"><input type="radio" name="options" autocomplete="off"> + </label>
+    </div>
+  </div>
+</div>
+
 <div id="extra_attributes" *ngIf="char_race == 'Humano' || char_race == 'Lefou' || char_race == 'Osteon' || char_race == 'Sereia / Tritão'">
     <p>Escolha mais 3 atributos para ampliar (bônus de raça)</p>
     <table>
@@ -25,66 +87,4 @@
         <td *ngIf="char_race == 'Lefou'"><input type="checkbox" class="5" disabled></td>
       </tr>
     </table>
-</div>
-
-<div class="row">      
-    <div class="attribute">
-      <p class="name">For</p>
-      <p class="value">{{attributes_modifiers[0]}}</p>
-      <p class="value_2">{{attributes_values[0]}}</p>
-      <div class="btn-group btn-group-toggle force" data-toggle="buttons">
-        <label class="btn btn-danger" (click)="downgrade_attribute(0)"><input type="radio" name="options" autocomplete="off"> - </label>
-        <label class="btn btn-success disabled" (click)="upgrade_attribute(0)"><input type="radio" name="options" autocomplete="off"> + </label>
-      </div>
-    </div>
-    
-    <div class="attribute">
-      <p class="name">Des</p>
-      <p class="value">{{attributes_modifiers[1]}}</p>
-      <p class="value_2">{{attributes_values[1]}}</p>
-      <div class="btn-group btn-group-toggle dexterity" data-toggle="buttons">
-        <label class="btn btn-danger" (click)="downgrade_attribute(1)"><input type="radio" name="options" autocomplete="off"> - </label>
-        <label class="btn btn-success disabled" (click)="upgrade_attribute(1)"><input type="radio" name="options" autocomplete="off"> + </label>
-      </div>
-    </div>
-    
-    <div class="attribute">
-      <p class="name">Con</p>
-      <p class="value">{{attributes_modifiers[2]}}</p>
-      <p class="value_2">{{attributes_values[2]}}</p>
-      <div class="btn-group btn-group-toggle constitution" data-toggle="buttons">
-        <label class="btn btn-danger" (click)="downgrade_attribute(2)"><input type="radio" name="options" autocomplete="off"> - </label>
-        <label class="btn btn-success disabled" (click)="upgrade_attribute(2)"><input type="radio" name="options" autocomplete="off"> + </label>
-      </div>
-    </div>
-    
-    <div class="attribute last_3">
-      <p class="name">Int</p>
-      <p class="value">{{attributes_modifiers[3]}}</p>
-      <p class="value_2">{{attributes_values[3]}}</p>
-      <div class="btn-group btn-group-toggle intelligence" data-toggle="buttons">
-        <label class="btn btn-danger" (click)="downgrade_attribute(3)"><input type="radio" name="options" autocomplete="off"> - </label>
-        <label class="btn btn-success disabled" (click)="upgrade_attribute(3)"><input type="radio" name="options" autocomplete="off"> + </label>
-      </div>
-    </div>
-    
-    <div class="attribute last_3">
-      <p class="name">Sab</p>
-      <p class="value">{{attributes_modifiers[4]}}</p>
-      <p class="value_2">{{attributes_values[4]}}</p>
-      <div class="btn-group btn-group-toggle wisdom" data-toggle="buttons">
-        <label class="btn btn-danger" (click)="downgrade_attribute(4)"><input type="radio" name="options" autocomplete="off"> - </label>
-        <label class="btn btn-success disabled" (click)="upgrade_attribute(4)"><input type="radio" name="options" autocomplete="off"> + </label>
-      </div>
-    </div>
-    
-    <div class="attribute last_3">
-      <p class="name">Car</p>
-      <p class="value">{{attributes_modifiers[5]}}</p>
-      <p class="value_2">{{attributes_values[5]}}</p>
-      <div class="btn-group btn-group-toggle charisma" data-toggle="buttons">
-        <label class="btn btn-danger" (click)="downgrade_attribute(5)"><input type="radio" name="options" autocomplete="off"> - </label>
-        <label class="btn btn-success disabled" (click)="upgrade_attribute(5)"><input type="radio" name="options" autocomplete="off"> + </label>
-      </div>
-    </div>
 </div>

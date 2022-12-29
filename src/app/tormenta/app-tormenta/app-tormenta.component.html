@@ -39,25 +39,29 @@
             </select>
         </div>
 
+        <div>
+            <div class="details-form">
+                <label><span>Vida: </span>{{life_points}}</label>
+            </div>
+            <div class="details-form">
+                <label><span>Mana: </span>{{mana_points}}</label>
+            </div>
+            <div class="details-form defense-points">
+                <label>Defesa: {{defense_points + extra_defense_points}} <span>= ({{defense_points}} + </span></label>
+                <input type="number" id="extra-defense" [(ngModel)]="extra_defense_points">
+                <label><span>)</span></label>
+            </div>
+        </div>
+
         <div id="download">
             <label class="btn btn-2" id="export" (click)="download_sheet()">
-            Download
+                Download
             </label>
             <label class="btn btn-2">
-            <input id="fileInput" type="file" name="file" (change)="import_char($event)"/>
-            Importar
+                <input id="fileInput" type="file" name="file" (change)="import_char($event)"/>
+                Importar
             </label>
         </div>
-        
-        <basic-stats
-            [level]="level"
-            [class]="class"
-            [origin]="origin"
-            [god]="god"
-            [race]="race"
-            [life_points]="life_points"
-            [mana_points]="mana_points">
-        </basic-stats>
 
         <base-attributes
             [level]="level"

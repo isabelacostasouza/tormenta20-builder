@@ -15,11 +15,11 @@
         margin-bottom: 10px;
         font-size: 20px;
     }
-    
+
     .row {
         margin-top: 10%;
     }
-    
+
     p {
         float: left;
         margin-top: 0;
@@ -154,5 +154,37 @@
 
     .select-basics {
         width: 100% !important;
+    }
+
+    .details-form {
+        width: 100% !important;
+    }
+}
+
+.details-form {
+    width: 30%;
+    display: inline-block;
+    text-align: center;
+    background-color: lightgray;
+    margin-bottom: 20px;
+    padding: 10px;
+    padding-bottom: 5px;
+    font-weight: bold;
+
+    border: 1px solid #938888;
+
+    #extra-defense {
+        width: 2em;
+    }
+}
+
+.defense-points {
+    width: 40%;
+    padding-top: 7px;
+    span {
+        font-weight: 400;
+    }
+    input {
+        text-align: center;
     }
 }
