@@ -9,14 +9,6 @@
             "subtipo": "Corpo a Corpo — Leves"
         },
         {
-            "nome": "Ataque desarmado",
-            "dano": "1d3",
-            "alcance": "contato",
-            "critico": "2x",
-            "tipo": "simples",
-            "subtipo": "Corpo a Corpo — Leves"
-        },
-        {
             "nome": "Espada curta",
             "dano": "1d6",
             "alcance": "contato",
@@ -58,7 +50,7 @@
         },
         {
             "nome": "Bordão",
-            "dano": "1d6/1d6",
+            "dano": "1d6",
             "alcance": "contato",
             "critico": "2x",
             "tipo": "simples",
@@ -274,7 +266,7 @@
         },
         {
             "nome": "Espada bastarda",
-            "dano": "1d10/1d12",
+            "dano": "1d12",
             "alcance": "contato",
             "critico": "19",
             "tipo": "exótica",
@@ -282,7 +274,7 @@
         },
         {
             "nome": "Katana",
-            "dano": "1d8/1d10",
+            "dano": "1d10",
             "alcance": "contato",
             "critico": "19",
             "tipo": "exótica",
@@ -298,7 +290,7 @@
         },
         {
             "nome": "Corrente de espinhos",
-            "dano": "2d4/2d4",
+            "dano": "2d4",
             "alcance": "contato",
             "critico": "19",
             "tipo": "exótica",
@@ -316,7 +308,7 @@
             "nome": "Mosquete",
             "dano": "2d8",
             "alcance": "médio",
-            "critico": "19/x3",
+            "critico": "x3",
             "tipo": "fogo",
             "subtipo": "Ataque à Distância"
         },
@@ -324,7 +316,7 @@
             "nome": "Pistola",
             "dano": "2d6",
             "alcance": "curto",
-            "critico": "19/x3",
+            "critico": "x3",
             "tipo": "fogo",
             "subtipo": "Ataque à Distância"
         }

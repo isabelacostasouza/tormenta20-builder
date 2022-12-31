@@ -1,4 +1,26 @@
-<div id="body">
+<button style="display: none;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#attack-modal" id="fisical-attack-btn"></button>
+
+<div class="modal fade" id="attack-modal" tabindex="-1" role="dialog" aria-labelledby="attack-title" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="attack-title">Ataque</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p><span class="bold">Acerto = </span><span class="bold larger">{{attack_total}} </span><span>[{{attack_dice}} (dado) + {{attack_expertise}} (pericia)]</span></p>
+            <p><span class="bold">Dano = </span><span class="bold larger">{{damage_total}} </span> <span>[{{damage_dice}} (dado) + {{damage_bonus}} (bonus) + {{damage_mod}} (mod)]</span></p>
+        </div>
+        </div>
+    </div>
+</div>
+
+  <div id="body">
+    <div id="attacks">
+
+    </div>
     <div class="app-tormenta row">
         <div class="col-sm-7">
 
@@ -39,20 +61,6 @@
             </select>
         </div>
 
-        <div>
-            <div class="details-form">
-                <label><span>Vida: </span>{{life_points}}</label>
-            </div>
-            <div class="details-form">
-                <label><span>Mana: </span>{{mana_points}}</label>
-            </div>
-            <div class="details-form defense-points">
-                <label>Defesa: {{defense_points + extra_defense_points}} <span>= ({{defense_points}} + </span></label>
-                <input type="number" id="extra-defense" [(ngModel)]="extra_defense_points">
-                <label><span>)</span></label>
-            </div>
-        </div>
-
         <div id="download">
             <label class="btn btn-2" id="export" (click)="download_sheet()">
                 Download
@@ -63,78 +71,119 @@
             </label>
         </div>
 
+        <div>     
+            <div>
+                <div class="details-form">
+                    <label><span>Vida: </span>{{life_points}}</label>
+                </div>
+                <div class="details-form">
+                    <label><span>Mana: </span>{{mana_points}}</label>
+                </div>
+                <div class="details-form defense-points">
+                    <label>Defesa: {{defense_points + extra_defense_points}} <span>= ({{defense_points}} + </span></label>
+                    <input type="number" id="extra-defense" [(ngModel)]="extra_defense_points">
+                    <label><span>)</span></label>
+                </div>
+            </div>
+
         <base-attributes
-            [level]="level"
-            [class]="class"
-            [origin]="origin"
-            [god]="god"
-            [race]="race"
-            [extra_attributes]="extra_attributes_import"
-            [modifiers_import]="modifiers_import"
+                [level]="level"
+                [class]="class"
+                [origin]="origin"
+                [god]="god"
+                [race]="race"
+                [extra_attributes]="extra_attributes_import"
+                [modifiers_import]="modifiers_import"
+                
+                (total_expertises_output)="onTotalExpertises($event)"
+                (life_points_output)="onLifePoints($event)"
+                (mana_points_output)="onManaPoints($event)"
+                (attributes_modifiers_output)="onAttributesModifiers($event)"
+                (attributes_values_output)="onAttributesValues($event)"
+                (extra_output_indexes)="onExtraAttributes($event)">
+            </base-attributes>
+
+            <div>
+                <div id="weapon-attacks">
+                    <h1>Ataques físicos</h1>
+                    <div>
+                        <table>
+                            <tr>
+                                <td class="name-weapon"> Desarmado </td>
+                                <td class="damage-weapon"> Dano: 1d4 </td>
+                                <td class="range-weapon"> Critico: 2x </td>
+                                <td class="attack-button">
+                                    <button class="attack btn" (click)="fisical_attack({critico: '2x',dano: '1d4',nome: 'Desarmado',alcance: 'contato'})">Atacar</button>
+                                </td>
+                            </tr>
+                            <tr *ngFor="let weapon of chosen_weapons; let i = index;">
+                                <td class="name-weapon"> {{ weapon.nome }} </td>
+                                <td class="damage-weapon"> Dano: {{ weapon.dano }} </td>
+                                <td class="range-weapon"> Alcance: {{ weapon.alcance }} </td>
+                                <td class="attack-button">
+                                    <button class="attack btn" (click)="fisical_attack(weapon)">Atacar</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <select-weapon
+                [chosen_weapons_import]="chosen_weapons_import"
+                [proeficiencies]="proeficiencies"
+                (chosen_weapons_output)="onChosenWeapons($event)">
+            </select-weapon>
+
+            <select-armor
+                [chosen_armor_import]="chosen_armor_import"
+                [proeficiencies]="proeficiencies"
+                (chosen_armor_output)="onChosenArmor($event)">
+            </select-armor>
+
+            <select-shield
+                *ngIf="proeficiencies && proeficiencies.includes('Escudos')"
+                [chosen_shield_import]="chosen_shield_import"
+                (chosen_shield_output)="onChosenShield($event)">
+            </select-shield>
+
+            <default-proficiencies
+                [class]="class"
+                (proficiencies_output)="onProeficiencies($event)">
+            </default-proficiencies>
+
+            <origin-bonus
+                [origin]="origin"
+                (origin_bonus)="onOriginBonus($event)">
+            ></origin-bonus>
+
+            <default-powers
+                [level]="level"
+                [race]="race"
+                [class]="class"
+                [origin]="origin"
+                [god]="god"
+                (default_powers)="onDefaultPowers($event)">
+            </default-powers>
             
-            (total_expertises_output)="onTotalExpertises($event)"
-            (life_points_output)="onLifePoints($event)"
-            (mana_points_output)="onManaPoints($event)"
-            (attributes_modifiers_output)="onAttributesModifiers($event)"
-            (attributes_values_output)="onAttributesValues($event)"
-            (extra_output_indexes)="onExtraAttributes($event)">
-        </base-attributes>
+            <select-power
+                [level]="level"chosen_magic_output
+                [class]="class"
+                [chosen_powers_import]="chosen_powers_import"
+                [attributes_modifiers]="attributes_values"
+                (chosen_powers_output)="onChosenPowers($event)">
+            </select-power>
 
-        <select-weapon
-            [chosen_weapons_import]="chosen_weapons_import"
-            [proeficiencies]="proeficiencies"
-            (chosen_weapons_output)="onChosenWeapons($event)">
-        </select-weapon>
-
-        <select-armor
-            [chosen_armor_import]="chosen_armor_import"
-            [proeficiencies]="proeficiencies"
-            (chosen_armor_output)="onChosenArmor($event)">
-        </select-armor>
-
-        <select-shield
-            *ngIf="proeficiencies && proeficiencies.includes('Escudos')"
-            [chosen_shield_import]="chosen_shield_import"
-            (chosen_shield_output)="onChosenShield($event)">
-        </select-shield>
-
-        <default-proficiencies
-            [class]="class"
-            (proficiencies_output)="onProeficiencies($event)">
-        </default-proficiencies>
-
-        <origin-bonus
-            [origin]="origin"
-            (origin_bonus)="onOriginBonus($event)">
-        ></origin-bonus>
-
-        <default-powers
-            [level]="level"
-            [race]="race"
-            [class]="class"
-            [origin]="origin"
-            [god]="god"
-            (default_powers)="onDefaultPowers($event)">
-        </default-powers>
-        
-        <select-power
-            [level]="level"chosen_magic_output
-            [class]="class"
-            [chosen_powers_import]="chosen_powers_import"
-            [attributes_modifiers]="attributes_values"
-            (chosen_powers_output)="onChosenPowers($event)">
-        </select-power>
-
-        <select-magic
-            [level]="level"
-            [class]="class"
-            [chosen_magic_import]="chosen_magic_import"
-            [chosen_magic_schools_import]="chosen_magic_schools_import"
-            (chosen_magic_output)="onChosenMagic($event)"
-            (chosen_magic_school_output)="onChosenMagicSchool($event)">
-        </select-magic>
-        
+            <select-magic
+                [level]="level"
+                [class]="class"
+                [chosen_magic_import]="chosen_magic_import"
+                [chosen_magic_schools_import]="chosen_magic_schools_import"
+                (chosen_magic_output)="onChosenMagic($event)"
+                (chosen_magic_school_output)="onChosenMagicSchool($event)">
+            </select-magic>
         </div>
+    </div>
 
         <div class="col-sm-5 expertises-table">
         <expertise-table
@@ -151,5 +200,3 @@
         </div>
     </div>
 </div>
-
-<router-outlet></router-outlet>

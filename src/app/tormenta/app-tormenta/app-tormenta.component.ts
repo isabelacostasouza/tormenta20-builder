@@ -36,6 +36,9 @@ export class AppTormentaComponent implements OnInit {
 
   defense_data = [0, 0, 0];
 
+  attack_dice = 0; attack_expertise = 0; attack_total = 0; attack_active = true;
+  damage_total = 0; damage_dice = 0; damage_mod = 0; damage_bonus = 0;
+
   total_expertises = 0; life_points = 0; mana_points = 0; defense_points = 0; extra_defense_points = 0;
   attributes_modifiers = [0]; attributes_values = [0];
 
@@ -271,6 +274,42 @@ export class AppTormentaComponent implements OnInit {
     
     if(this.chosen_armor && this.chosen_armor.length > 0) this.defense_points += parseInt(this.chosen_armor[0].bonus);
     if(this.chosen_shield && this.chosen_shield.length > 0) this.defense_points += parseInt(this.chosen_shield[0].bonus);
+  }
+
+  roll_dice(max: any) {
+    return (Math.floor(Math.random() * max)+ 1);
+  }
+
+  fisical_attack(weapon: any) {
+    this.set_attack_weapon(weapon);
+    this.set_damage_weapon(weapon);
+  
+    document.getElementById('fisical-attack-btn')?.click();
+  }
+
+  set_attack_weapon(weapon: any) {
+    this.attack_dice = this.roll_dice(20);
+    
+    if(weapon.alcance == "médio") this.attack_expertise = this.expertises_table.train[23] + this.expertises_table.others[23] + this.half_level + this.attributes_modifiers[1];
+    else this.attack_expertise = this.expertises_table.train[18] + this.expertises_table.others[18] + this.half_level + this.attributes_modifiers[0];
+    
+    this.attack_total = this.attack_dice + this.attack_expertise;
+  }
+
+  set_damage_weapon(weapon: any) {
+    let num_dices = parseInt(weapon.dano.split('d')[0]);
+    let sides_dice = parseInt(weapon.dano.split('d')[1]);
+    
+    this.damage_dice = 0; this.damage_mod = 0; this.damage_bonus = 0;
+
+    for(let i = 0; i < num_dices; i++) this.damage_dice += this.roll_dice(sides_dice);
+    if(this.damage_dice == (num_dices*sides_dice)) {
+      if(weapon.critico.includes('x')) this.damage_dice = this.damage_dice * parseInt(weapon.critico.split('x')[0]);
+      else this.damage_dice = parseInt(weapon.critico)
+    }
+    if(weapon.alcance != "médio") this.damage_mod = this.attributes_modifiers[0];
+
+    this.damage_total =  this.damage_dice + this.damage_mod;
   }
 
   updateHalfLevel() {

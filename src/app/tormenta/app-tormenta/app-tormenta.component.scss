@@ -1,6 +1,7 @@
 #body {
     background-image: url('https://wallpaperaccess.com/full/1216331.jpg');
-    background-repeat: no-repeat, repeat;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
     overflow-x: hidden;
 }
@@ -168,6 +169,83 @@ input[type=number] {
             display: inline;
             padding: 0 20px;
         }
+    }
+}
+
+#weapon-attacks {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    margin-top: 20px;
+    background-color: #959595;
+    padding: 20px;
+    text-align: center;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+
+    h1 {
+        text-align: left;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    p {
+        padding-top: 10px;
+        padding-bottom: 0;
+        margin-bottom: 10px;
+    }
+    table {
+        width: 100%;
+        text-align: left;
+        border-collapse:separate;
+        border-spacing:0 10px;
+
+        td {
+            background-color: lightgray;
+            margin: 5px;
+            padding: 10px 10px 10px 0;
+        }
+        .name-weapon, .damage-weapon {
+            padding-left: 10px;
+            border-right: 1px solid #808080;
+            padding: 10px 10px 10px 20px;
+        }
+        .range-weapon {
+            padding: 10px 10px 10px 10px;
+            background-color: lightgray;
+        }
+        .attack-button {
+            text-align: center;
+            button {
+                width: 80%;
+                margin-left: 5%;
+                background-color: #5bb96d;
+                color: white;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+#attack-modal {
+    span {
+        font-style: italic;
+    }
+    .larger {
+        color: #001fff;
+    }
+    .bold {
+        font-weight: bold;
+    }
+}
+
+#new-attack {
+    background-color: lightgrey;
+    padding: 10px;
+    button {
+        background-color: #5bb96d;
+        color: white;
+        font-weight: bold;
+        padding: 10px 20px;
     }
 }
 
