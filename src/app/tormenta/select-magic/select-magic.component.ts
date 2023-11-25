@@ -198,8 +198,8 @@ export class SelectMagicComponent implements OnInit {
   }
 
   choose_magic(event: any) {
-    let index = event.path[0].parentElement.parentElement.getElementsByClassName("panel-group")[0].id.split("accordionMagic2_")[1];
-    this.choose_magic_index(index);
+    let index = event.composedPath()[0].parentElement.parentElement.getElementsByClassName("panel-group")[0].id.split("accordionMagic2_")[1];
+    this.choose_magic_index(1);
   }
 
   choose_magic_index(index: any) {
@@ -217,7 +217,7 @@ export class SelectMagicComponent implements OnInit {
   }
 
   remove_magic(event: any) {
-    let index = event.path[0].parentElement.parentElement.getElementsByClassName("panel-group")[0].id.split("accordionMagic1_")[1];
+    let index = event.composedPath()[0].parentElement.parentElement.getElementsByClassName("panel-group")[0].id.split("accordionMagic1_")[1];
     let new_magic = this.chosen_magics[index];
 
     this.number_chosen_magics[parseInt(new_magic.informacao.circulo) - 1] -= 1;

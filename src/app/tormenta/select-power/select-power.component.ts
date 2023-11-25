@@ -121,7 +121,7 @@ export class SelectPowerComponent implements OnInit {
   }
 
   choose_power(event: any) {
-    this.choose_power_index(event.path[0].parentElement.parentElement.getElementsByClassName("panel-group")[0].id.split("accordion3_")[1]);
+    this.choose_power_index(event.composedPath()[0].parentElement.parentElement.getElementsByClassName("panel-group")[0].id.split("accordion3_")[1]);
   }
 
   remove_power(event: any) {
@@ -129,7 +129,7 @@ export class SelectPowerComponent implements OnInit {
       this.enable_powers();
     }
 
-    let power_index = parseInt(event.path[0].parentElement.parentElement.getElementsByClassName("panel-group")[0].id.split("accordion2_")[1]);
+    let power_index = parseInt(event.composedPath()[0].parentElement.parentElement.getElementsByClassName("panel-group")[0].id.split("accordion2_")[1]);
     this.powers_list.push(this.chosen_powers[power_index]);
     this.powers_description.push(this.chosen_powers_description[power_index]);
     this.chosen_powers.splice(power_index, 1);
